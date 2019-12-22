@@ -9,9 +9,13 @@ ALLOWED_HOSTS = []
 
 # ENVIRONMENT CONFIGURATION SETTINGS
 LOCAL_DEV = True
+STAGING = False
 PRODUCTION = False
 
-ROOT_URLCONF = 'b1gplay.urls'
+if LOCAL_DEV:
+    ROOT_URLCONF = 'b1gplay.urls_dev'
+elif PRODUCTION:
+    ROOT_URLCONF = 'b1gplay.urls_prod'
 
 DATABASES = {
     'default': {

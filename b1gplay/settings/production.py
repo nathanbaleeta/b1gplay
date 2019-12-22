@@ -3,8 +3,8 @@ from b1gplay.settings.defaults import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-#SECRET_KEY = os.environ['SECRET_KEY']
-SECRET_KEY = '&376#u(ycg17pmrb%*kz*)47vq)1z6-3wb==p2$w4hy!zgo%3e'
+SECRET_KEY = os.environ['SECRET_KEY']
+
 
 # SECURITY WARNING: update this when you have the production host
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
@@ -12,15 +12,10 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # ENVIRONMENT CONFIGURATION SETTINGS
 LOCAL_DEV = False
+STAGING = False
 PRODUCTION = True
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-'''
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -31,11 +26,10 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', 'invalid_database_port'),
     }
 }
-'''
 
-'''
 if LOCAL_DEV:
     ROOT_URLCONF = 'b1gplay.urls_dev'
+elif STAGING:
+    ROOT_URLCONF = 'b1gplay.urls_staging'
 elif PRODUCTION:
     ROOT_URLCONF = 'b1gplay.urls_prod'
-'''
