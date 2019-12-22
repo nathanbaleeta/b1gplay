@@ -3,30 +3,24 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '&376#u(ycg17pmrb%*kz*)47vq)1z6-3wb==p2$w4hy!zgo%3e'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-
 # Application definition
-
-INSTALLED_APPS = [
+PREREQUSITE_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps.account.apps.AccountConfig',
+    'corsheaders',
+
 ]
+
+PROJECT_APPS = [
+    'apps.account.apps.AccountConfig',
+
+]
+
+INSTALLED_APPS = PREREQUSITE_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -36,7 +30,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'b1gplay.urls'
 
@@ -58,17 +57,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'b1gplay.wsgi.application'
 
+# Email Transport configuration
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'do.not.reply.b1gplay@gmail.com'
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_PASSWORD', 'invalid_if_no_email')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
