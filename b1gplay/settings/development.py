@@ -12,6 +12,17 @@ LOCAL_DEV = True
 STAGING = False
 PRODUCTION = False
 
+# For testing use 'AllowAny' option
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
 if LOCAL_DEV:
     ROOT_URLCONF = 'b1gplay.urls_dev'
 elif PRODUCTION:
