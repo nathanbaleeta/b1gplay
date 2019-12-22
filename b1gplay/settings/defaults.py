@@ -15,6 +15,7 @@ PREREQUSITE_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
+    'drf_yasg',
 
 ]
 
