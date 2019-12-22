@@ -22,6 +22,8 @@ PROJECT_APPS = [
 
 INSTALLED_APPS = PREREQUSITE_APPS + PROJECT_APPS
 
+AUTH_USER_MODEL = 'account.User'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
