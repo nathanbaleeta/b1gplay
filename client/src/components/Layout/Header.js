@@ -5,9 +5,9 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Badge from "@material-ui/core/Badge";
-import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -16,6 +16,9 @@ import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import PollIcon from "@material-ui/icons/Poll";
+import SearchIcon from "@material-ui/icons/Search";
+import PersonIcon from "@material-ui/icons/Person";
+import Avatar from "@material-ui/core/Avatar";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { Redirect } from "react-router-dom";
@@ -29,7 +32,7 @@ const styles = theme => ({
     zoom: "75%"
   },
   appBar: {
-    background: "mediumvioletred"
+    background: "#C12424"
   },
   grow: {
     flexGrow: 1
@@ -54,9 +57,13 @@ const styles = theme => ({
     color: "black"
   },
   avatar: {
-    margin: 10
+    margin: 10,
+    height: 55,
+    width: 55,
+    background: "#C12424"
   },
   title: {
+    fontStyle: "italic",
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block"
@@ -66,14 +73,14 @@ const styles = theme => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
     backgroundColor: "white",
-    "&:hover": {
+    /* "&:hover": {
       backgroundColor: fade(theme.palette.common.white, 0.75)
-    },
-    marginRight: theme.spacing(2),
+    }, */
+    marginRight: theme.spacing.unit * 2,
     marginLeft: 0,
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
+      marginLeft: theme.spacing.unit * 8,
       width: "auto"
     }
   },
@@ -82,7 +89,7 @@ const styles = theme => ({
     "&:hover": {
       color: fade(theme.palette.common.white, 0.25)
     },
-    width: theme.spacing(9),
+    width: theme.spacing.unit * 9,
     height: "100%",
     position: "absolute",
     pointerEvents: "none",
@@ -92,7 +99,16 @@ const styles = theme => ({
   },
   inputRoot: {
     color: "primary",
-    width: "100%"
+
+    paddingTop: theme.spacing.unit,
+    paddingRight: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+    paddingLeft: theme.spacing.unit * 10,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("lg")]: {
+      width: 700
+    }
   },
   inputInput: {
     paddingTop: theme.spacing(1),
@@ -218,14 +234,12 @@ class Header extends Component {
         <div className={classes.root}>
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
-              <IconButton
-                edge="start"
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="open drawer"
-              >
-                <MenuIcon />
-              </IconButton>
+              <Avatar
+                alt="Remy Sharp"
+                src="/static/images/logo/logo.png"
+                className={classes.avatar}
+              />
+
               <Typography
                 className={classes.title}
                 variant="h4"
@@ -233,8 +247,22 @@ class Header extends Component {
                 noWrap
                 //style={{ fontWeight: "bold" }}
               >
-                Symboboard
+                b1gplay
               </Typography>
+
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <InputBase
+                  style={{ height: 50 }}
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }}
+                />
+              </div>
 
               <div className={classes.grow} />
               <div className={classes.sectionDesktop}>
@@ -242,6 +270,23 @@ class Header extends Component {
                   <Grid container justify="center" alignItems="center">
                     <div style={{ paddingRight: 20 }}>
                       <Link to="/" className={classes.linkMenuItems}>
+                        <IconButton color="inherit">
+                          <PersonIcon />
+                        </IconButton>
+
+                        <Typography
+                          variant="body2"
+                          color="inherit"
+                          noWrap
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Home
+                        </Typography>
+                      </Link>
+                    </div>
+
+                    <div style={{ paddingRight: 20 }}>
+                      <Link to="/analytics" className={classes.linkMenuItems}>
                         <IconButton color="inherit">
                           <PollIcon />
                         </IconButton>
@@ -258,7 +303,7 @@ class Header extends Component {
                     </div>
 
                     <div style={{ paddingRight: 20 }}>
-                      <Link to="/settings" className={classes.linkMenuItems}>
+                      <Link to="/messages" className={classes.linkMenuItems}>
                         <IconButton color="inherit">
                           <SettingsIcon />
                         </IconButton>
@@ -269,7 +314,7 @@ class Header extends Component {
                           noWrap
                           style={{ fontWeight: "bold" }}
                         >
-                          Settings
+                          Messages
                         </Typography>
                       </Link>
                     </div>
