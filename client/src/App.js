@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "typeface-roboto";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { Switch, Route } from "react-router-dom";
+
+import SignIn from "./components/Account/SignIn/SignIn";
+//import SignUp from "./components/SignUp";
+import Home from "./components/Home";
+
+import AuthenticatedRoute from "./components/common/AuthenticatedRoute";
+
+const App = () => (
+  <Switch>
+    <Route path="/auth/login" render={props => <SignIn {...props} />} />
+    {/*  <Route path="/auth/signup" component={SignUp} /> */}
+    <AuthenticatedRoute path="/" component={Home} />
+  </Switch>
+);
 
 export default App;

@@ -37,5 +37,5 @@ urlpatterns = [
                                        cache_timeout=0), name='schema-redoc'),
 
     # Add security deterrent layer: Redirect to admin authentication page if no url matched
-    url(r'^(.*)', include('djoser.urls')),
+    #url(r'^(.*)', include('djoser.urls')),
 ]
