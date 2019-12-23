@@ -29,7 +29,8 @@ import { logout } from "../../actions/auth/auth";
 const styles = theme => ({
   root: {
     width: "100%",
-    zoom: "75%"
+    zoom: "70%",
+    maxZoom: "75%"
   },
   appBar: {
     background: "#C12424"
