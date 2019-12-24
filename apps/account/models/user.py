@@ -18,7 +18,9 @@ class UserManager(BaseUserManager):
                     account_type=None,
                     club=None,
                     club_location=None,
-                    tag=None):
+                    affiliation=None,
+                    media_house=None
+                    ):
         user = self.model(first_name=first_name,
                           last_name=last_name,
                           email=email,
@@ -29,7 +31,8 @@ class UserManager(BaseUserManager):
                           account_type=account_type,
                           club=club,
                           club_location=club_location,
-                          tag=tag
+                          affiliation=affiliation,
+                          media_house=media_house
                           )
         user.set_password(password)
         user.is_staff = False
@@ -48,7 +51,9 @@ class UserManager(BaseUserManager):
                          account_type=None,
                          club=None,
                          club_location=None,
-                         tag=None):
+                         affiliation=None,
+                         media_house=None
+                         ):
         user = self.create_user(first_name=first_name,
                                 last_name=last_name,
                                 email=email,
@@ -59,7 +64,8 @@ class UserManager(BaseUserManager):
                                 account_type=account_type,
                                 club=club,
                                 club_location=club_location,
-                                tag=tag
+                                affiliation=affiliation,
+                                media_house=media_house
                                 )
         user.is_active = True
         user.is_staff = True
@@ -89,10 +95,9 @@ class User(AbstractUser):
 
     gender = models.CharField(max_length=6)
     country_of_origin = models.CharField(
-        max_length=100,
-        blank=True
+        max_length=100
     )
-    birth_date = models.DateField(null=True, blank=True)
+    birth_date = models.DateField()
 
     account_type = models.CharField(max_length=10, blank=True)
 
@@ -162,7 +167,9 @@ class User(AbstractUser):
         'club_location',
         'tag',
         'profile_photo',
-        'cover_photo'
+        'cover_photo',
+        'affiliation',
+        'media_house',
     ]
 
     USERNAME_FIELD = 'email'
