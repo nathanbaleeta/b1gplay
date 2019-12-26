@@ -11,7 +11,6 @@ import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import SettingsIcon from "@material-ui/icons/Settings";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
@@ -306,7 +305,7 @@ class Header extends Component {
                     <div style={{ paddingRight: 20 }}>
                       <Link to="/messages" className={classes.linkMenuItems}>
                         <IconButton color="inherit">
-                          <SettingsIcon />
+                          <MailIcon />
                         </IconButton>
 
                         <Typography

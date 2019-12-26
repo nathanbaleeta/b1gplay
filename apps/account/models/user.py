@@ -16,10 +16,16 @@ class UserManager(BaseUserManager):
                     country_of_origin,
                     birth_date,
                     account_type=None,
+                    profile_photo=None,
+                    cover_photo=None,
+                    tag=None,
                     club=None,
                     club_location=None,
                     affiliation=None,
-                    media_house=None
+                    media_house=None,
+                    position=None,
+                    height=None,
+                    weight=None,
                     ):
         user = self.model(first_name=first_name,
                           last_name=last_name,
@@ -29,10 +35,17 @@ class UserManager(BaseUserManager):
                           country_of_origin=country_of_origin,
                           birth_date=birth_date,
                           account_type=account_type,
+                          profile_photo=profile_photo,
+                          cover_photo=cover_photo,
+                          tag=tag,
                           club=club,
                           club_location=club_location,
                           affiliation=affiliation,
-                          media_house=media_house
+                          media_house=media_house,
+                          position=position,
+                          height=height,
+                          weight=weight,
+
                           )
         user.set_password(password)
         user.is_staff = False
@@ -49,24 +62,37 @@ class UserManager(BaseUserManager):
                          country_of_origin,
                          birth_date,
                          account_type=None,
+                         profile_photo=None,
+                         cover_photo=None,
+                         tag=None,
                          club=None,
                          club_location=None,
                          affiliation=None,
-                         media_house=None
+                         media_house=None,
+                         position=None,
+                         height=None,
+                         weight=None,
                          ):
-        user = self.create_user(first_name=first_name,
-                                last_name=last_name,
-                                email=email,
-                                password=password,
-                                gender=gender,
-                                country_of_origin=country_of_origin,
-                                birth_date=birth_date,
-                                account_type=account_type,
-                                club=club,
-                                club_location=club_location,
-                                affiliation=affiliation,
-                                media_house=media_house
-                                )
+        user = self.model(first_name=first_name,
+                          last_name=last_name,
+                          email=email,
+                          password=password,
+                          gender=gender,
+                          country_of_origin=country_of_origin,
+                          birth_date=birth_date,
+                          account_type=account_type,
+                          profile_photo=profile_photo,
+                          cover_photo=cover_photo,
+                          tag=tag,
+                          club=club,
+                          club_location=club_location,
+                          affiliation=affiliation,
+                          media_house=media_house,
+                          position=position,
+                          height=height,
+                          weight=weight,
+                          )
+        user.set_password(password)
         user.is_active = True
         user.is_staff = True
         user.is_superuser = True
@@ -103,9 +129,9 @@ class User(AbstractUser):
 
     tag = models.CharField(max_length=100, blank=True)
     profile_photo = models.ImageField(
-        upload_to='profile_photos', default='profile_photos/avatar1.png')
+        upload_to='profile_photos', default='profile_photos/avatar1.png', blank=True)
     cover_photo = models.ImageField(
-        upload_to='cover_photos', default='cover_photos/cover.jpg')
+        upload_to='cover_photos', default='cover_photos/cover.jpg', blank=True)
 
     # general info concerning either player, team, media, coach or fan...
     club = models.CharField(max_length=100, blank=True)
@@ -122,13 +148,15 @@ class User(AbstractUser):
         max_digits=6,
         decimal_places=2,
         null=True,
-        blank=True
+        blank=True,
+        default=0
     )
     weight = models.DecimalField(
         max_digits=6,
         decimal_places=2,
         null=True,
-        blank=True
+        blank=True,
+        default=0
     )
     wingspan = models.DecimalField(
         max_digits=6,
@@ -170,6 +198,9 @@ class User(AbstractUser):
         'cover_photo',
         'affiliation',
         'media_house',
+        'position',
+        'height',
+        'weight'
     ]
 
     USERNAME_FIELD = 'email'
