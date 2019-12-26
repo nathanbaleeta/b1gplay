@@ -26,6 +26,10 @@ class UserManager(BaseUserManager):
                     position=None,
                     height=None,
                     weight=None,
+                    wingspan=None,
+                    vertical_leap=None,
+                    time_to_run_40m=None,
+                    time_to_run_100m=None
                     ):
         user = self.model(first_name=first_name,
                           last_name=last_name,
@@ -45,7 +49,10 @@ class UserManager(BaseUserManager):
                           position=position,
                           height=height,
                           weight=weight,
-
+                          wingspan=wingspan,
+                          vertical_leap=vertical_leap,
+                          time_to_run_40m=time_to_run_40m,
+                          time_to_run_100m=time_to_run_100m
                           )
         user.set_password(password)
         user.is_staff = False
@@ -72,6 +79,10 @@ class UserManager(BaseUserManager):
                          position=None,
                          height=None,
                          weight=None,
+                         wingspan=None,
+                         vertical_leap=None,
+                         time_to_run_40m=None,
+                         time_to_run_100m=None
                          ):
         user = self.model(first_name=first_name,
                           last_name=last_name,
@@ -91,6 +102,10 @@ class UserManager(BaseUserManager):
                           position=position,
                           height=height,
                           weight=weight,
+                          wingspan=wingspan,
+                          vertical_leap=vertical_leap,
+                          time_to_run_40m=time_to_run_40m,
+                          time_to_run_100m=time_to_run_100m
                           )
         user.set_password(password)
         user.is_active = True
@@ -162,25 +177,29 @@ class User(AbstractUser):
         max_digits=6,
         decimal_places=2,
         null=True,
-        blank=True
+        blank=True,
+        default=0
     )
     vertical_leap = models.DecimalField(
         max_digits=6,
         decimal_places=2,
         null=True,
-        blank=True
+        blank=True,
+        default=0
     )
     time_to_run_40m = models.DecimalField(
         max_digits=6,
         decimal_places=2,
         null=True,
-        blank=True
+        blank=True,
+        default=0
     )
     time_to_run_100m = models.DecimalField(
         max_digits=6,
         decimal_places=2,
         null=True,
-        blank=True
+        blank=True,
+        default=0
     )
 
     # Use this setting to leverage djoser auth User model and simply extend it
@@ -200,7 +219,11 @@ class User(AbstractUser):
         'media_house',
         'position',
         'height',
-        'weight'
+        'weight',
+        'wingspan',
+        'vertical_leap',
+        'time_to_run_40m',
+        'time_to_run_100m'
     ]
 
     USERNAME_FIELD = 'email'
