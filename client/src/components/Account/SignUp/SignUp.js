@@ -9,7 +9,6 @@ import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { Redirect } from "react-router-dom";
@@ -23,7 +22,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="#">
-        symboboard.io
+        b1gplay.com
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -41,7 +40,9 @@ const styles = theme => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main
+    backgroundColor: "#C12424",
+    height: 55,
+    width: 55
   },
   form: {
     width: "100%", // Fix IE 11 issue.
@@ -100,9 +101,11 @@ class SignUp extends Component {
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-              <LockOutlinedIcon />
-            </Avatar>
+            <Avatar
+              className={classes.avatar}
+              alt="b1gplay logo"
+              src="/static/images/logo/logo.png"
+            ></Avatar>
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>

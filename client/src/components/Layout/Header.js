@@ -271,51 +271,73 @@ class Header extends Component {
                     <div style={{ paddingRight: 20 }}>
                       <Link to="/" className={classes.linkMenuItems}>
                         <IconButton color="inherit">
-                          <PersonIcon />
+                          <PersonIcon style={{ height: 40, width: 40 }} />
                         </IconButton>
 
-                        <Typography
+                        {/*    <Typography
                           variant="body2"
                           color="inherit"
                           noWrap
                           style={{ fontWeight: "bold" }}
                         >
                           Home
-                        </Typography>
+                        </Typography> */}
                       </Link>
                     </div>
 
                     <div style={{ paddingRight: 20 }}>
                       <Link to="/analytics" className={classes.linkMenuItems}>
                         <IconButton color="inherit">
-                          <PollIcon />
+                          <PollIcon style={{ height: 40, width: 40 }} />
                         </IconButton>
 
-                        <Typography
+                        {/*    <Typography
                           variant="body2"
                           color="inherit"
                           noWrap
                           style={{ fontWeight: "bold" }}
                         >
                           Analytics
-                        </Typography>
+                        </Typography> */}
                       </Link>
                     </div>
 
                     <div style={{ paddingRight: 20 }}>
                       <Link to="/messages" className={classes.linkMenuItems}>
                         <IconButton color="inherit">
-                          <MailIcon />
+                          <MailIcon style={{ height: 40, width: 40 }} />
                         </IconButton>
 
-                        <Typography
+                        {/*    <Typography
                           variant="body2"
                           color="inherit"
                           noWrap
                           style={{ fontWeight: "bold" }}
                         >
                           Messages
-                        </Typography>
+                        </Typography> */}
+                      </Link>
+                    </div>
+
+                    <div style={{ paddingRight: 20 }}>
+                      <Link
+                        to="/notifications"
+                        className={classes.linkMenuItems}
+                      >
+                        <IconButton color="inherit">
+                          <NotificationsIcon
+                            style={{ height: 40, width: 40 }}
+                          />
+                        </IconButton>
+
+                        {/*       <Typography
+                          variant="body2"
+                          color="inherit"
+                          noWrap
+                          style={{ fontWeight: "bold" }}
+                        >
+                          Alerts
+                        </Typography> */}
                       </Link>
                     </div>
                   </Grid>
@@ -325,7 +347,7 @@ class Header extends Component {
                   color="inherit"
                   onClick={this.handleProfileMenuOpen}
                 >
-                  <AccountCircle style={{ height: 50, width: 50 }} />
+                  <AccountCircle style={{ height: 40, width: 40 }} />
                 </IconButton>
               </div>
               <div className={classes.sectionMobile}>

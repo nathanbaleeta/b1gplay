@@ -15,7 +15,7 @@ class UserManager(BaseUserManager):
                     gender,
                     country_of_origin,
                     birth_date,
-                    account_type=None,
+                    account_type,
                     profile_photo=None,
                     cover_photo=None,
                     tag=None,
@@ -68,7 +68,7 @@ class UserManager(BaseUserManager):
                          password,
                          country_of_origin,
                          birth_date,
-                         account_type=None,
+                         account_type,
                          profile_photo=None,
                          cover_photo=None,
                          tag=None,
@@ -124,33 +124,64 @@ class User(AbstractUser):
     Person with an account on b1gplay
     """
 
-    FUNCTION = 1
-    VIEWER = 2
-    TECHNICIAN = 3
-    ROLE_CHOICES = (
-        (FUNCTION, 'Functional'),
-        (VIEWER, 'Viewer'),
-        (TECHNICIAN, 'Technician')
+    MALE = 'Male'
+    FEMALE = 'Female'
+    GENDER_CHOICES = (
+        (MALE, 'Male'),
+        (FEMALE, 'Female'),
     )
+
+    COACH = 'Coach'
+    PLAYER = 'Player'
+    MEDIA = 'Media'
+    FAN = 'Fan'
+    AGENT = 'Agent'
+    ROLE_CHOICES = (
+        (COACH, 'Coach'),
+        (PLAYER, 'Player'),
+        (MEDIA, 'Media'),
+        (FAN, 'Fan'),
+        (AGENT, 'Agent'),
+    )
+
+    CENTER_FORWARD = 'Center forward'
+    POINT_GUARD = 'Point guard'
+    POWER_FORWARD = 'Power forward'
+    SHOOTING_GUARD = 'Shooting guard'
+    SMALL_FORWARD = 'Small forward'
+    POSITION_CHOICES = (
+        (CENTER_FORWARD, 'Center forward'),
+        (POINT_GUARD, 'Point guard'),
+        (POWER_FORWARD, 'Power forward'),
+        (SHOOTING_GUARD, 'Shooting guard'),
+        (SMALL_FORWARD, 'Small forward'),
+    )
+
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
         editable=False
     )
-    email = models.EmailField(max_length=255, unique=True)
+    email = models.EmailField(
+        max_length=255, unique=True)
     first_name = models.CharField(max_length=30)  # Make firstname mandatory
     last_name = models.CharField(max_length=30)  # Make lastname mandatory
     username = models.CharField(max_length=30, blank=True)
 
-    gender = models.CharField(max_length=6)
+    gender = models.CharField(
+        max_length=6,
+        choices=GENDER_CHOICES,
+    )
     country_of_origin = models.CharField(
         max_length=100
     )
     birth_date = models.DateField()
 
-    # account_type = models.CharField(max_length=10, blank=True)
-    account_type = models.PositiveSmallIntegerField(
-        choices=ROLE_CHOICES, null=True, blank=True)
+    account_type = models.CharField(
+        max_length=10,
+        choices=ROLE_CHOICES,
+        # default=PLAYER,
+    )
 
     tag = models.CharField(max_length=100, blank=True)
     profile_photo = models.ImageField(
@@ -168,7 +199,13 @@ class User(AbstractUser):
     media_house = models.CharField(max_length=100, blank=True)
 
     # Player details
-    position = models.CharField(max_length=100, blank=True)
+    #position = models.CharField(max_length=100, blank=True)
+    position = models.CharField(
+        max_length=20,
+        choices=POSITION_CHOICES,
+        blank=True,
+        null=True
+    )
     height = models.DecimalField(
         max_digits=6,
         decimal_places=2,
