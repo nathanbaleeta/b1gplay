@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group
-#from django.contrib.auth.models import Group
+# from django.contrib.auth.models import Group
 import uuid
 from django.urls import reverse
 from django.contrib.auth.models import BaseUserManager
@@ -124,6 +124,14 @@ class User(AbstractUser):
     Person with an account on b1gplay
     """
 
+    FUNCTION = 1
+    VIEWER = 2
+    TECHNICIAN = 3
+    ROLE_CHOICES = (
+        (FUNCTION, 'Functional'),
+        (VIEWER, 'Viewer'),
+        (TECHNICIAN, 'Technician')
+    )
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -140,7 +148,9 @@ class User(AbstractUser):
     )
     birth_date = models.DateField()
 
-    account_type = models.CharField(max_length=10, blank=True)
+    # account_type = models.CharField(max_length=10, blank=True)
+    account_type = models.PositiveSmallIntegerField(
+        choices=ROLE_CHOICES, null=True, blank=True)
 
     tag = models.CharField(max_length=100, blank=True)
     profile_photo = models.ImageField(
