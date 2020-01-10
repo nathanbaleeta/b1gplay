@@ -6,6 +6,13 @@ from django.urls import reverse
 from django.contrib.auth.models import BaseUserManager
 
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+# from py2neo import neo4j
+from py2neo import Database, Graph
+from py2neo.data import Node, Relationship
+
+
 class UserManager(BaseUserManager):
     def create_user(self,
                     first_name,
@@ -199,7 +206,7 @@ class User(AbstractUser):
     media_house = models.CharField(max_length=100, blank=True)
 
     # Player details
-    #position = models.CharField(max_length=100, blank=True)
+    # position = models.CharField(max_length=100, blank=True)
     position = models.CharField(
         max_length=20,
         choices=POSITION_CHOICES,
@@ -287,3 +294,36 @@ class User(AbstractUser):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+
+@receiver(post_save, sender=User)
+def create_user_node(sender, instance, created, **kwargs):
+    """
+    Creates the user node on the graph database.
+    """
+
+    if created:
+        graph = Graph(host="localhost", user="neo4j", password="admin1234")
+        query = '''
+            CREATE (n:User { 
+            first_name : {fname}, 
+            last_name : {lname},
+            gender : {gender},
+            country_of_origin : {country_of_origin},
+            birth_date : {birth_date},
+            account_type : {account_type},
+            club : {club},
+            club_location : {club_location}
+            })
+        '''
+
+        # now execute the query
+        graph.run(query, fname=instance.first_name,
+                  lname=instance.last_name,
+                  gender=instance.gender,
+                  country_of_origin=instance.country_of_origin,
+                  birth_date=instance.birth_date,
+                  account_type=instance.account_type,
+                  club=instance.club,
+                  club_location=instance.club_location
+                  ).evaluate()
