@@ -340,12 +340,45 @@ def update_user_node(sender, instance, **kwargs):
     graph = Graph(host="localhost", user="neo4j", password="admin1234")
     query = '''
             MATCH (n { id: {id} })
-            SET n.first_name = toString({fname}), n.last_name = toString({lname})
+            SET n.first_name = toString({fname}), 
+            n.last_name = toString({lname}),
+            n.gender = toString({gender}),
+            n.country_of_origin = toString({country_of_origin}),
+            n.birth_date = date({birth_date}),
+            n.account_type = toString({account_type}),
+            n.club = toString({club}),  
+            n.club_location = toString({club_location}), 
+            n.tag = toString({tag}),
+            n.affiliation = toString({affiliation}),  
+            n.media_house = toString({media_house}),  
+            n.position = toString({position}),
+            n.height = toString({height}),
+            n.weight = toString({weight}),
+            n.wingspan = toString({wingspan}),
+            n.vertical_leap = toString({vertical_leap}),
+            n.time_to_run_40m = toString({time_to_run_40m}),  
+            n.time_to_run_100m = toString({time_to_run_100m})    
         '''
 
     # now execute the query
     graph.run(query,
               id=instance.id,
               fname=instance.first_name,
-              lname=instance.last_name
+              lname=instance.last_name,
+              gender=instance.gender,
+              country_of_origin=instance.country_of_origin,
+              birth_date=instance.birth_date,
+              account_type=instance.account_type,
+              club=instance.club,
+              club_location=instance.club_location,
+              tag=instance.tag,
+              affiliation=instance.affiliation,
+              media_house=instance.media_house,
+              position=instance.position,
+              height=instance.height,
+              weight=instance.weight,
+              wingspan=instance.wingspan,
+              vertical_leap=instance.vertical_leap,
+              time_to_run_40m=instance.time_to_run_40m,
+              time_to_run_100m=instance.time_to_run_100m
               ).evaluate()
