@@ -186,10 +186,14 @@ class User(AbstractUser):
     )
 
     tag = models.CharField(max_length=100, blank=True)
-    profile_photo = models.ImageField(
-        upload_to='profile_photos', default='profile_photos/avatar1.png', blank=True)
-    cover_photo = models.ImageField(
-        upload_to='cover_photos', default='cover_photos/cover.jpg', blank=True)
+
+    # profile_photo = models.ImageField(
+    #    upload_to='profile_photos', default='profile_photos/avatar1.png', null=True, blank=True)
+    profile_photo = models.CharField(max_length=100, blank=True)
+    cover_photo = models.CharField(max_length=100, blank=True)
+
+    # cover_photo = models.ImageField(
+    #    upload_to='cover_photos', default='cover_photos/cover.jpg', blank=True)
 
     # general info concerning either player, team, media, coach or fan...
     club = models.CharField(max_length=100, blank=True)
@@ -299,6 +303,8 @@ def create_user_node(sender, instance, created, **kwargs):
             club : {club},
             club_location : {club_location},
             tag : {tag},
+            profile_photo : {profile_photo},
+            cover_photo : {cover_photo},
             affiliation: {affiliation},
             media_house: {media_house},
             position: {position},
@@ -323,6 +329,8 @@ def create_user_node(sender, instance, created, **kwargs):
                   club=instance.club,
                   club_location=instance.club_location,
                   tag=instance.tag,
+                  profile_photo=instance.profile_photo,
+                  cover_photo=instance.cover_photo,
                   affiliation=instance.affiliation,
                   media_house=instance.media_house,
                   position=instance.position,
@@ -349,6 +357,8 @@ def update_user_node(sender, instance, **kwargs):
             n.club = toString({club}),  
             n.club_location = toString({club_location}), 
             n.tag = toString({tag}),
+            n.profile_photo = toString({profile_photo}),
+            n.cover_photo = toString({cover_photo}),
             n.affiliation = toString({affiliation}),  
             n.media_house = toString({media_house}),  
             n.position = toString({position}),
@@ -372,6 +382,8 @@ def update_user_node(sender, instance, **kwargs):
               club=instance.club,
               club_location=instance.club_location,
               tag=instance.tag,
+              profile_photo=instance.profile_photo,
+              cover_photo=instance.cover_photo,
               affiliation=instance.affiliation,
               media_house=instance.media_house,
               position=instance.position,
