@@ -8,7 +8,7 @@ from django.contrib.auth.models import BaseUserManager
 
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-# from py2neo import neo4j
+
 from py2neo import Database, Graph
 from py2neo.data import Node, Relationship
 
@@ -164,11 +164,6 @@ class User(AbstractUser):
         (SMALL_FORWARD, 'Small forward'),
     )
 
-    id = models.UUIDField(
-        primary_key=True,
-        default=uuid.uuid4,
-        editable=False
-    )
     email = models.EmailField(
         max_length=255, unique=True)
     first_name = models.CharField(max_length=30)  # Make firstname mandatory
@@ -294,6 +289,7 @@ def create_user_node(sender, instance, created, **kwargs):
         graph = Graph(host="localhost", user="neo4j", password="admin1234")
         query = '''
             CREATE (n:User { 
+            id: {id},
             first_name : {fname}, 
             last_name : {lname},
             gender : {gender},
@@ -316,7 +312,9 @@ def create_user_node(sender, instance, created, **kwargs):
         '''
 
         # now execute the query
-        graph.run(query, fname=instance.first_name,
+        graph.run(query,
+                  id=instance.id,
+                  fname=instance.first_name,
                   lname=instance.last_name,
                   gender=instance.gender,
                   country_of_origin=instance.country_of_origin,
