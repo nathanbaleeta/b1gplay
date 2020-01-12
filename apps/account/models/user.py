@@ -333,3 +333,19 @@ def create_user_node(sender, instance, created, **kwargs):
                   time_to_run_40m=instance.time_to_run_40m,
                   time_to_run_100m=instance.time_to_run_100m
                   ).evaluate()
+
+
+@receiver(post_save, sender=User)
+def update_user_node(sender, instance, **kwargs):
+    graph = Graph(host="localhost", user="neo4j", password="admin1234")
+    query = '''
+            MATCH (n { id: {id} })
+            SET n.first_name = toString({fname}), n.last_name = toString({lname})
+        '''
+
+    # now execute the query
+    graph.run(query,
+              id=instance.id,
+              fname=instance.first_name,
+              lname=instance.last_name
+              ).evaluate()
