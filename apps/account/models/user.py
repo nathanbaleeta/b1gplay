@@ -213,44 +213,32 @@ class User(AbstractUser):
         blank=True,
         null=True
     )
-    height = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
+    height = models.FloatField(
         null=True,
         blank=True,
         default=0
     )
-    weight = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
+    weight = models.FloatField(
         null=True,
         blank=True,
         default=0
     )
-    wingspan = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
+    wingspan = models.FloatField(
         null=True,
         blank=True,
         default=0
     )
-    vertical_leap = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
+    vertical_leap = models.FloatField(
         null=True,
         blank=True,
         default=0
     )
-    time_to_run_40m = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
+    time_to_run_40m = models.FloatField(
         null=True,
         blank=True,
         default=0
     )
-    time_to_run_100m = models.DecimalField(
-        max_digits=6,
-        decimal_places=2,
+    time_to_run_100m = models.FloatField(
         null=True,
         blank=True,
         default=0
@@ -313,7 +301,17 @@ def create_user_node(sender, instance, created, **kwargs):
             birth_date : {birth_date},
             account_type : {account_type},
             club : {club},
-            club_location : {club_location}
+            club_location : {club_location},
+            tag : {tag},
+            affiliation: {affiliation},
+            media_house: {media_house},
+            position: {position},
+            height: {height},
+            weight: {weight},
+            wingspan: {wingspan},
+            vertical_leap: {vertical_leap},
+            time_to_run_40m: {time_to_run_40m},
+            time_to_run_100m: {time_to_run_100m}
             })
         '''
 
@@ -325,5 +323,15 @@ def create_user_node(sender, instance, created, **kwargs):
                   birth_date=instance.birth_date,
                   account_type=instance.account_type,
                   club=instance.club,
-                  club_location=instance.club_location
+                  club_location=instance.club_location,
+                  tag=instance.tag,
+                  affiliation=instance.affiliation,
+                  media_house=instance.media_house,
+                  position=instance.position,
+                  height=instance.height,
+                  weight=instance.weight,
+                  wingspan=instance.wingspan,
+                  vertical_leap=instance.vertical_leap,
+                  time_to_run_40m=instance.time_to_run_40m,
+                  time_to_run_100m=instance.time_to_run_100m
                   ).evaluate()
