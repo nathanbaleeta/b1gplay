@@ -9,7 +9,6 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-
 import MenuItem from "@material-ui/core/MenuItem";
 
 import { countries } from "../../../utils/CountryList";
@@ -145,8 +144,8 @@ class ProfileForm extends Component {
                 id="country_of_origin"
                 select
                 className={classes.selectField}
-                name="country_of_origin"
-                value={this.props.wizard.country_of_origin}
+                name="countryOfOrigin"
+                value={this.props.wizard.countryOfOrigin}
                 onChange={this.onChange}
                 label="Country of Origin:"
                 fullWidth
@@ -185,7 +184,6 @@ const mapStateToProps = state => ({
   wizard: state.wizard
 });
 
-export default connect(
-  mapStateToProps,
-  { updateField }
-)(withStyles(styles)(ProfileForm));
+export default connect(mapStateToProps, { updateField })(
+  withStyles(styles)(ProfileForm)
+);

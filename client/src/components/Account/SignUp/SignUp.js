@@ -1,14 +1,13 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
+//import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
-
+//import TextField from "@material-ui/core/TextField";
 
 import Avatar from "@material-ui/core/Avatar";
 import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
+//import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
@@ -96,7 +95,7 @@ class SignUp extends Component {
 
   render() {
     const { classes } = this.props;
-    const { first_name, last_name, email, password } = this.state;
+    //const { first_name, last_name, email, password } = this.state;
 
     if (this.props.isAuthenticated) {
       return <Redirect to="/" />;
@@ -106,14 +105,14 @@ class SignUp extends Component {
       <Fragment>
         <Container component="main" maxWidth="sm" className={classes.root}>
           <CssBaseline />
-<Avatar
-          className={classes.avatar}
-          alt="b1gplay logo"
-          src="/static/images/logo/logo.png"
-        ></Avatar>
+          <Avatar
+            className={classes.avatar}
+            alt="b1gplay logo"
+            src="/static/images/logo/logo.png"
+          ></Avatar>
           <SignUpWizard />
 
-{/*  
+          {/*  
           <div className={classes.paper}>
             
             <Typography component="h1" variant="h5">
@@ -213,7 +212,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  { signUp }
-)(withStyles(styles)(SignUp));
+export default connect(mapStateToProps, { signUp })(withStyles(styles)(SignUp));

@@ -12,7 +12,7 @@ import Link from "@material-ui/core/Link";
 import { Redirect } from "react-router-dom";
 
 import ProfileForm from "./ProfileForm";
-//import AccountForm from "./AccountForm";
+import AccountForm from "./AccountForm";
 //import SportsForm from "./SportsForm";
 
 import { connect } from "react-redux";
@@ -46,7 +46,7 @@ function getStepContent(step) {
     case 0:
       return <ProfileForm />;
     case 1:
-      return "<AccountForm />";
+      return <AccountForm />;
     case 2:
       return "<SportsForm />";
 
@@ -169,7 +169,7 @@ class SignUpWizard extends Component {
         <Stepper activeStep={activeStep} className={classes.stepper}>
           {steps.map(label => (
             <Step key={label}>
-              <StepLabel>{label}</StepLabel>
+              <StepLabel styles={{ fontSize: "32px" }}>{label}</StepLabel>
             </Step>
           ))}
         </Stepper>

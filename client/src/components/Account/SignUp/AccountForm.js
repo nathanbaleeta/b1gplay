@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 
 import { connect } from "react-redux";
-import { updateField } from "../../actions/wizard";
+import { updateField } from "../../../actions/wizard";
 
 const styles = theme => ({
   formControl: {
