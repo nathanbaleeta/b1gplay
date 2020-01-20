@@ -26,7 +26,16 @@ class AccountForm extends Component {
   state = {};
 
   onChange = e => {
-    this.props.updateField(e.target.name, e.target.value);
+    
+    // Remove passwords from redux state for security reasons
+    switch (e.target.name) {
+      case "password":
+        return localStorage.setItem("password", e.target.value);
+      case "password2":
+        return localStorage.setItem("password2", e.target.value);
+      default:
+        return this.props.updateField(e.target.name, e.target.value);
+    }
   };
 
   render() {
@@ -111,7 +120,6 @@ AccountForm.propTypes = {
 const mapStateToProps = state => ({
   wizard: state.wizard
 });
-export default connect(
-  mapStateToProps,
-  { updateField }
-)(withStyles(styles)(AccountForm));
+export default connect(mapStateToProps, { updateField })(
+  withStyles(styles)(AccountForm)
+);

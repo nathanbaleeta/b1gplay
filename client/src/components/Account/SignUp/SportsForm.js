@@ -9,7 +9,15 @@ import { positions } from "../../../utils/PositionList";
 import { countries } from "../../../utils/CountryList";
 
 import { connect } from "react-redux";
-import { updateField, updatePlayerFields, clearFields } from "../../../actions/wizard";
+import {
+  updateField,
+  updateCoachFields,
+  updatePlayerFields,
+  updateMediaFields,
+  updateFanFields,
+  updateAgentFields,
+  clearFields
+} from "../../../actions/wizard";
 
 const styles = theme => ({
   formControl: {
@@ -67,13 +75,13 @@ class SportsForm extends React.Component {
       case "Player":
         return this.props.updatePlayerFields(e.target.name, e.target.value);
       case "Media":
-        return this.props.clearFields(e.target.name, e.target.value);
+        return this.props.updateMediaFields(e.target.name, e.target.value);
       case "Coach":
-        return this.props.clearFields(e.target.name, e.target.value);
+        return this.props.updateCoachFields(e.target.name, e.target.value);
       case "Fan":
-        return this.props.clearFields(e.target.name, e.target.value);
+        return this.props.updateFanFields(e.target.name, e.target.value);
       case "Agent":
-        return this.props.clearFields(e.target.name, e.target.value);
+        return this.props.updateAgentFields(e.target.name, e.target.value);
       default:
         return this.props.updateField(e.target.name, e.target.value);
     }
@@ -286,13 +294,13 @@ class SportsForm extends React.Component {
         <Grid item xs={6} sm={6}>
           <TextField
             id="outlined-uncontrolled"
-            label="Present club/ Affiliation"
+            label="Present Club"
             className={classes.textField}
             margin="normal"
             variant="outlined"
             fullWidth
-            name="affiliation"
-            value={this.props.wizard.affiliation}
+            name="club"
+            value={this.props.wizard.club}
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -393,7 +401,11 @@ class SportsForm extends React.Component {
 SportsForm.propTypes = {
   classes: PropTypes.object.isRequired,
   updateField: PropTypes.func.isRequired,
+  updateCoachFields: PropTypes.func.isRequired,
   updatePlayerFields: PropTypes.func.isRequired,
+  updateMediaFields: PropTypes.func.isRequired,
+  updateFanFields: PropTypes.func.isRequired,
+  updateAgentFields: PropTypes.func.isRequired,
   clearFields: PropTypes.func.isRequired
 };
 
@@ -401,6 +413,12 @@ const mapStateToProps = state => ({
   wizard: state.wizard
 });
 
-export default connect(mapStateToProps, { updateField, updatePlayerFields, clearFields })(
-  withStyles(styles)(SportsForm)
-);
+export default connect(mapStateToProps, {
+  updateField,
+  updateCoachFields,
+  updatePlayerFields,
+  updateMediaFields,
+  updateFanFields,
+  updateAgentFields,
+  clearFields
+})(withStyles(styles)(SportsForm));

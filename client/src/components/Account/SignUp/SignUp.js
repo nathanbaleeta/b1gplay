@@ -17,6 +17,7 @@ import SignUpWizard from "./SignUpWizard";
 
 import { connect } from "react-redux";
 import { signUp } from "../../../actions/auth";
+import { clearFields } from "../../../actions/wizard";
 
 function Copyright() {
   return (
@@ -67,6 +68,10 @@ class SignUp extends Component {
     password: ""
   };
 
+  componentDidMount() {
+    this.props.clearFields();
+  }
+
   clearSignUpForm = e => {
     this.setState({
       first_name: "",
@@ -89,8 +94,7 @@ class SignUp extends Component {
     // Call signUp action creator
     this.props.signUp(first_name, last_name, email, password);
 
-    // Clear textfields in sign up form
-    this.clearSignUpForm();
+    
   };
 
   render() {
@@ -205,6 +209,7 @@ class SignUp extends Component {
 SignUp.propTypes = {
   classes: PropTypes.object.isRequired,
   signUp: PropTypes.func.isRequired,
+  clearFields: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
 
@@ -212,4 +217,6 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { signUp })(withStyles(styles)(SignUp));
+export default connect(mapStateToProps, { signUp, clearFields })(
+  withStyles(styles)(SignUp)
+);

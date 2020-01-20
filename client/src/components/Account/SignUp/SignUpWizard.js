@@ -17,6 +17,7 @@ import SportsForm from "./SportsForm";
 
 import { connect } from "react-redux";
 import { signUp } from "../../../actions/auth";
+import { clearFields } from "../../../actions/wizard";
 
 const styles = theme => ({
   stepper: {
@@ -65,8 +66,8 @@ class SignUpWizard extends Component {
 
     // Extract values from external state
     const email = this.props.wizard.email;
-    const password = this.props.wizard.password;
-    const password2 = this.props.wizard.password2;
+    const password = localStorage.getItem("password");
+    const password2 = localStorage.getItem("password2");
 
     const firstname = this.props.wizard.firstname;
     const lastname = this.props.wizard.lastname;
@@ -85,6 +86,7 @@ class SignUpWizard extends Component {
     const time_to_run_40m = this.props.wizard.time40m;
     const time_to_run_100m = this.props.wizard.time100m;
     const affiliation = this.props.wizard.affiliation;
+    const club = this.props.wizard.club;
     const clubLocation = this.props.wizard.clubLocation;
 
     if (password !== password2) {
@@ -109,10 +111,14 @@ class SignUpWizard extends Component {
         time_to_run_40m,
         time_to_run_100m,
         affiliation,
+        club,
         clubLocation
       };
       console.log(newUser)
       //this.props.register(newUser);
+
+      // Clear textfields in sign up form and redux state
+      this.props.clearFields();
     }
   };
 
@@ -231,6 +237,7 @@ class SignUpWizard extends Component {
 SignUpWizard.propTypes = {
   classes: PropTypes.object.isRequired,
   signUp: PropTypes.func.isRequired,
+  clearFields: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
 
@@ -239,6 +246,6 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { signUp })(
+export default connect(mapStateToProps, { signUp, clearFields })(
   withStyles(styles)(SignUpWizard)
 );
