@@ -6,9 +6,10 @@ import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import { positions } from "../../../utils/PositionList";
+import { countries } from "../../../utils/CountryList";
 
 import { connect } from "react-redux";
-import { updateField } from "../../../actions/wizard";
+import { updateField, updatePlayerFields, clearFields } from "../../../actions/wizard";
 
 const styles = theme => ({
   formControl: {
@@ -62,7 +63,20 @@ class SportsForm extends React.Component {
   }
 
   onChange = e => {
-    this.props.updateField(e.target.name, e.target.value);
+    switch (e.target.value) {
+      case "Player":
+        return this.props.updatePlayerFields(e.target.name, e.target.value);
+      case "Media":
+        return this.props.clearFields(e.target.name, e.target.value);
+      case "Coach":
+        return this.props.clearFields(e.target.name, e.target.value);
+      case "Fan":
+        return this.props.clearFields(e.target.name, e.target.value);
+      case "Agent":
+        return this.props.clearFields(e.target.name, e.target.value);
+      default:
+        return this.props.updateField(e.target.name, e.target.value);
+    }
   };
 
   render() {
@@ -119,48 +133,7 @@ class SportsForm extends React.Component {
 
     const player = (
       <Grid container spacing={2}>
-        <Grid item xs={6} sm={6}>
-          <TextField
-            required
-            id="outlined-uncontrolled"
-            label="Height"
-            type="number"
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            fullWidth
-            name="height"
-            value={this.props.wizard.height}
-            onChange={this.onChange}
-            InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline
-              }
-            }}
-          />
-        </Grid>
-        <Grid item xs={6} sm={6}>
-          {/*     <TextField
-            required
-            id="outlined-uncontrolled"
-            label="Position"
-            className={classes.textField}
-            margin="normal"
-            variant="outlined"
-            fullWidth
-            name="position"
-            value={this.props.wizard.position}
-            onChange={this.onChange}
-            InputLabelProps={{
-              shrink: true
-            }}
-            InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline
-              }
-            }}
-          /> */}
-
+        <Grid item xs={4} sm={4}>
           <TextField
             id="position"
             select
@@ -189,8 +162,48 @@ class SportsForm extends React.Component {
             ))}
           </TextField>
         </Grid>
+        <Grid item xs={4} sm={4}>
+          <TextField
+            required
+            id="outlined-uncontrolled"
+            label="Height"
+            type="number"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+            fullWidth
+            name="height"
+            value={this.props.wizard.height}
+            onChange={this.onChange}
+            InputProps={{
+              classes: {
+                notchedOutline: classes.notchedOutline
+              }
+            }}
+          />
+        </Grid>
+        <Grid item xs={4} sm={4}>
+          <TextField
+            required
+            id="outlined-uncontrolled"
+            label="Weight"
+            type="number"
+            className={classes.textField}
+            margin="normal"
+            variant="outlined"
+            fullWidth
+            name="weight"
+            value={this.props.wizard.weight}
+            onChange={this.onChange}
+            InputProps={{
+              classes: {
+                notchedOutline: classes.notchedOutline
+              }
+            }}
+          />
+        </Grid>
 
-        <Grid item xs={6} sm={6}>
+        <Grid item xs={4} sm={4}>
           <TextField
             required
             id="outlined-uncontrolled"
@@ -210,7 +223,7 @@ class SportsForm extends React.Component {
             }}
           />
         </Grid>
-        <Grid item xs={6} sm={6}>
+        <Grid item xs={4} sm={4}>
           <TextField
             required
             id="outlined-uncontrolled"
@@ -230,7 +243,7 @@ class SportsForm extends React.Component {
             }}
           />
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={4} sm={4}>
           <TextField
             required
             id="outlined-uncontrolled"
@@ -270,7 +283,7 @@ class SportsForm extends React.Component {
             }}
           />
         </Grid>
-        <Grid item xs={12} sm={12}>
+        <Grid item xs={6} sm={6}>
           <TextField
             id="outlined-uncontrolled"
             label="Present club/ Affiliation"
@@ -287,6 +300,36 @@ class SportsForm extends React.Component {
               }
             }}
           />
+        </Grid>
+
+        <Grid item xs={12} sm={12}>
+          <TextField
+            id="clubLocation"
+            select
+            className={classes.selectField}
+            name="clubLocation"
+            value={this.props.wizard.clubLocation}
+            onChange={this.onChange}
+            label="Club Location:"
+            fullWidth
+            margin="normal"
+            variant="outlined"
+            helperText="Please select country"
+            InputLabelProps={{
+              shrink: true
+            }}
+            InputProps={{
+              classes: {
+                notchedOutline: classes.notchedOutline
+              }
+            }}
+          >
+            {countries.map(option => (
+              <MenuItem key={option.Code} value={option.Name}>
+                {option.Name}
+              </MenuItem>
+            ))}
+          </TextField>
         </Grid>
       </Grid>
     );
@@ -349,13 +392,15 @@ class SportsForm extends React.Component {
 
 SportsForm.propTypes = {
   classes: PropTypes.object.isRequired,
-  updateField: PropTypes.func.isRequired
+  updateField: PropTypes.func.isRequired,
+  updatePlayerFields: PropTypes.func.isRequired,
+  clearFields: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
   wizard: state.wizard
 });
 
-export default connect(mapStateToProps, { updateField })(
+export default connect(mapStateToProps, { updateField, updatePlayerFields, clearFields })(
   withStyles(styles)(SportsForm)
 );

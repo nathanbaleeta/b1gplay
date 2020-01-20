@@ -14,3 +14,5 @@ export const AUTH_ERROR = "AUTH_ERROR";
 
 // Wizard
 export const UPDATE_FIELD = "UPDATE_FIELD";
+export const UPDATE_PLAYER_FIELDS = "UPDATE_PLAYER_FIELDS";
+export const CLEAR_FIELDS = "CLEAR_FIELDS";

@@ -126,8 +126,8 @@ class ProfileForm extends Component {
                 variant="outlined"
                 className={classes.textField}
                 margin="dense"
-                name="birthday"
-                value={this.props.wizard.birthday}
+                name="dob"
+                value={this.props.wizard.dob}
                 onChange={this.onChange}
                 InputLabelProps={{
                   shrink: true

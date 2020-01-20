@@ -71,22 +71,25 @@ class SignUpWizard extends Component {
     const firstname = this.props.wizard.firstname;
     const lastname = this.props.wizard.lastname;
     const gender = this.props.wizard.gender;
-    const birth_date = this.props.wizard.birthday;
-    const residence_country = this.props.wizard.residence_country;
+    const dob = this.props.wizard.dob;
+    const countryOfOrigin = this.props.wizard.countryOfOrigin;
 
     const account_type = this.props.wizard.accountType;
-    //const media_house = this.props.wizard.mediaHouse;
+    const media_house = this.props.wizard.mediaHouse;
 
-    const height = this.props.wizard.height;
     const position = this.props.wizard.position;
+    const height = this.props.wizard.height;
+    const weight = this.props.wizard.weight;
     const wingspan = this.props.wizard.wingspan;
     const vertical_leap = this.props.wizard.verticalLeap;
     const time_to_run_40m = this.props.wizard.time40m;
     const time_to_run_100m = this.props.wizard.time100m;
     const affiliation = this.props.wizard.affiliation;
+    const clubLocation = this.props.wizard.clubLocation;
 
     if (password !== password2) {
-      this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
+      console.log("Passwords do not match");
+      //this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
     } else {
       const newUser = {
         email,
@@ -94,19 +97,22 @@ class SignUpWizard extends Component {
         firstname,
         lastname,
         gender,
-        birth_date,
-        residence_country,
+        dob,
+        countryOfOrigin,
         account_type,
-        //media_house,
-        height,
+        media_house,
         position,
+        height,
+        weight,
         wingspan,
         vertical_leap,
         time_to_run_40m,
         time_to_run_100m,
-        affiliation
+        affiliation,
+        clubLocation
       };
-      this.props.register(newUser);
+      console.log(newUser)
+      //this.props.register(newUser);
     }
   };
 
