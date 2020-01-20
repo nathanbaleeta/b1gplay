@@ -65,7 +65,7 @@ class ProfileForm extends Component {
                 className={classes.textField}
                 label="Firstname"
                 name="firstname"
-                //value={this.props.wizard.firstname}
+                value={this.props.wizard.firstname}
                 onChange={this.onChange}
                 InputProps={{
                   classes: {
@@ -83,7 +83,7 @@ class ProfileForm extends Component {
                 variant="outlined"
                 fullWidth
                 name="lastname"
-                //value={this.props.wizard.lastname}
+                value={this.props.wizard.lastname}
                 onChange={this.onChange}
                 InputProps={{
                   classes: {
@@ -102,7 +102,7 @@ class ProfileForm extends Component {
                   aria-label="Gender"
                   className={classes.group}
                   name="gender"
-                  //value={this.props.wizard.gender}
+                  value={this.props.wizard.gender}
                   onChange={this.onChange}
                 >
                   <FormControlLabel
@@ -128,7 +128,7 @@ class ProfileForm extends Component {
                 className={classes.textField}
                 margin="dense"
                 name="birthday"
-                //value={this.props.wizard.birthday}
+                value={this.props.wizard.birthday}
                 onChange={this.onChange}
                 InputLabelProps={{
                   shrink: true
@@ -142,13 +142,13 @@ class ProfileForm extends Component {
             </Grid>
             <Grid item xs={12} sm={12}>
               <TextField
-                id="residenceCountry"
+                id="country_of_origin"
                 select
                 className={classes.selectField}
-                name="residence_country"
-                //value={this.props.wizard.residence_country}
+                name="country_of_origin"
+                value={this.props.wizard.country_of_origin}
                 onChange={this.onChange}
-                label="Residence Country:"
+                label="Country of Origin:"
                 fullWidth
                 margin="normal"
                 variant="outlined"

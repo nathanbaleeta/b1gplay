@@ -30,7 +30,8 @@ const styles = theme => ({
   button: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
-    backgroundColor: "#C12424"
+    backgroundColor: "#C12424",
+    color: "#FFFFFF"
   },
   link: {
     textDecoration: "none",
