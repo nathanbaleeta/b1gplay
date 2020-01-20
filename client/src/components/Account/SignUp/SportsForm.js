@@ -5,19 +5,19 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 
-import { positions } from "../../utils/PositionList";
+import { positions } from "../../../utils/PositionList";
 
 import { connect } from "react-redux";
-import { updateField } from "../../actions/wizard";
+import { updateField } from "../../../actions/wizard";
 
 const styles = theme => ({
   formControl: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     minWidth: "100%",
     maxWidth: "auto"
   },
   selectField: {
-    margin: theme.spacing.unit * 3,
+    margin: theme.spacing(3),
     width: "100%",
     textAlign: "left",
     fontFamily: "Arial",
@@ -69,7 +69,7 @@ class SportsForm extends React.Component {
     const { classes } = this.props;
 
     const common = (
-      <Grid container spacing={0}>
+      <Grid container spacing={2}>
         <Grid item xs={12} sm={12}>
           <TextField
             id="outlined-uncontrolled"
@@ -92,7 +92,7 @@ class SportsForm extends React.Component {
     );
 
     const media = (
-      <Grid container spacing={0}>
+      <Grid container spacing={2}>
         <Grid item xs={12} sm={12}>
           <TextField
             id="outlined-uncontrolled"
@@ -118,7 +118,7 @@ class SportsForm extends React.Component {
     );
 
     const player = (
-      <Grid container spacing={8}>
+      <Grid container spacing={2}>
         <Grid item xs={6} sm={6}>
           <TextField
             required
@@ -306,7 +306,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             className={classes.selectField}
-            helperText="Please select title"
+            helperText="Please select Account type"
             InputLabelProps={{
               shrink: true
             }}
@@ -356,7 +356,6 @@ const mapStateToProps = state => ({
   wizard: state.wizard
 });
 
-export default connect(
-  mapStateToProps,
-  { updateField }
-)(withStyles(styles)(SportsForm));
+export default connect(mapStateToProps, { updateField })(
+  withStyles(styles)(SportsForm)
+);

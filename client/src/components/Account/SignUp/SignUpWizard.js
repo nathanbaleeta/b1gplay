@@ -13,7 +13,7 @@ import { Redirect } from "react-router-dom";
 
 import ProfileForm from "./ProfileForm";
 import AccountForm from "./AccountForm";
-//import SportsForm from "./SportsForm";
+import SportsForm from "./SportsForm";
 
 import { connect } from "react-redux";
 import { signUp } from "../../../actions/auth";
@@ -48,7 +48,7 @@ function getStepContent(step) {
     case 1:
       return <AccountForm />;
     case 2:
-      return "<SportsForm />";
+      return <SportsForm />;
 
     default:
       throw new Error("Unknown step");
@@ -233,7 +233,6 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  { signUp }
-)(withStyles(styles)(SignUpWizard));
+export default connect(mapStateToProps, { signUp })(
+  withStyles(styles)(SignUpWizard)
+);
