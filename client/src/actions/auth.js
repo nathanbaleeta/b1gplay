@@ -9,7 +9,7 @@ import {
   LOGOUT_FAILURE,
   USER_LOADED,
   AUTH_ERROR
-} from "../../constants/ActionTypes";
+} from "../constants/ActionTypes";
 
 // SIGN UP USER
 export const signUp = (first_name, last_name, email, password) => dispatch => {

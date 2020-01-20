@@ -23,7 +23,7 @@ import Grid from "@material-ui/core/Grid";
 import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { logout } from "../../actions/auth/auth";
+import { logout } from "../../actions/auth";
 
 const styles = theme => ({
   root: {

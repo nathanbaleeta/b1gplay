@@ -10,3 +10,7 @@ export const USER_LOADING = "USER_LOADING";
 
 // Errors
 export const AUTH_ERROR = "AUTH_ERROR";
+
+
+// Wizard
+export const UPDATE_FIELD = "UPDATE_FIELD";

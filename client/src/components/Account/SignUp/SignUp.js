@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 
+
+import Avatar from "@material-ui/core/Avatar";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -13,9 +14,10 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { Redirect } from "react-router-dom";
 
-import { connect } from "react-redux";
+import SignUpWizard from "./SignUpWizard";
 
-import { signUp } from "../../../actions/auth/auth";
+import { connect } from "react-redux";
+import { signUp } from "../../../actions/auth";
 
 function Copyright() {
   return (
@@ -31,15 +33,15 @@ function Copyright() {
 }
 
 const styles = theme => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+  root: {
+    //marginTop: theme.spacing(8),
+    //display: "flex",
+    //flexDirection: "column",
+    //alignItems: "center",
     zoom: "80%"
   },
   avatar: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(3, 30, 2),
     backgroundColor: "#C12424",
     height: 55,
     width: 55
@@ -51,6 +53,10 @@ const styles = theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     background: "#C12424"
+  },
+  link: {
+    textDecoration: "none",
+    color: "dodgerblue"
   }
 });
 
@@ -98,14 +104,18 @@ class SignUp extends Component {
 
     return (
       <Fragment>
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="sm" className={classes.root}>
           <CssBaseline />
+<Avatar
+          className={classes.avatar}
+          alt="b1gplay logo"
+          src="/static/images/logo/logo.png"
+        ></Avatar>
+          <SignUpWizard />
+
+{/*  
           <div className={classes.paper}>
-            <Avatar
-              className={classes.avatar}
-              alt="b1gplay logo"
-              src="/static/images/logo/logo.png"
-            ></Avatar>
+            
             <Typography component="h1" variant="h5">
               Sign up
             </Typography>
@@ -182,8 +192,8 @@ class SignUp extends Component {
                   </Link>
                 </Grid>
               </Grid>
-            </form>
-          </div>
+            </form> 
+          </div> */}
           <Box mt={5}>
             <Copyright />
           </Box>
@@ -195,7 +205,7 @@ class SignUp extends Component {
 
 SignUp.propTypes = {
   classes: PropTypes.object.isRequired,
-  login: PropTypes.func.isRequired,
+  signUp: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
 

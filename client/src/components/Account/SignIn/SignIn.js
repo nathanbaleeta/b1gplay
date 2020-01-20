@@ -13,7 +13,7 @@ import Container from "@material-ui/core/Container";
 import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { signIn } from "../../../actions/auth/auth";
+import { signIn } from "../../../actions/auth";
 
 function Copyright() {
   return (
@@ -49,6 +49,11 @@ const styles = theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     background: "#C12424"
+  },
+  // Overiding css properties on material ui textbox
+  notchedOutline: {
+    borderWidth: "1px",
+    borderColor: "black !important"
   }
 });
 
@@ -113,6 +118,11 @@ class SignIn extends Component {
                 autoComplete="email"
                 autoFocus
                 onChange={this.onChange}
+                 InputProps={{
+                  classes: {
+                    notchedOutline: classes.notchedOutline
+                  }
+                }}
               />
               <TextField
                 variant="outlined"
@@ -126,6 +136,11 @@ class SignIn extends Component {
                 id="password"
                 autoComplete="current-password"
                 onChange={this.onChange}
+                 InputProps={{
+                  classes: {
+                    notchedOutline: classes.notchedOutline
+                  }
+                }}
               />
 
               <Button
