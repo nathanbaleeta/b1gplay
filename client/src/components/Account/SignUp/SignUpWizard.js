@@ -32,7 +32,10 @@ const styles = theme => ({
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
     backgroundColor: "#C12424",
-    color: "#FFFFFF"
+    color: "#FFFFFF",
+    fontSize: '170%',
+    maxHeight: '60px', 
+    minHeight: '60px'
   },
   link: {
     textDecoration: "none",
