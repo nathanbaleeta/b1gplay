@@ -47,7 +47,7 @@ class ProfileForm extends Component {
     this.props.updateField(e.target.name, e.target.value);
   };
 
-  handleChange = (event, value) => {
+  onChangeCountryOfOrigin = (event, value) => {
     this.props.updateField('countryOfOrigin', value);
   };
 
@@ -148,7 +148,7 @@ class ProfileForm extends Component {
               id="country_of_origin"
               options={countries}
               getOptionLabel={option => option.Name}
-              onInputChange={this.handleChange}
+              onInputChange={this.onChangeCountryOfOrigin}
               renderInput={params => (
                 <TextField
                   {...params}

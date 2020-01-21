@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import { positions } from "../../../utils/PositionList";
 import { countries } from "../../../utils/CountryList";
@@ -85,6 +86,10 @@ class SportsForm extends React.Component {
       default:
         return this.props.updateField(e.target.name, e.target.value);
     }
+  };
+
+  onChangeClubLocation = (event, value) => {
+    this.props.updateField('clubLocation', value);
   };
 
   render() {
@@ -311,33 +316,28 @@ class SportsForm extends React.Component {
         </Grid>
 
         <Grid item xs={12} sm={12}>
-          <TextField
-            id="clubLocation"
-            select
-            className={classes.selectField}
-            name="clubLocation"
-            value={this.props.wizard.clubLocation ? this.props.wizard.clubLocation : ""}
-            onChange={this.onChange}
-            label="Club Location:"
-            fullWidth
-            margin="normal"
-            variant="outlined"
-            helperText="Please select country"
-            InputLabelProps={{
-              shrink: true
-            }}
-            InputProps={{
-              classes: {
-                notchedOutline: classes.notchedOutline
-              }
-            }}
-          >
-            {countries.map(option => (
-              <MenuItem key={option.Code} value={option.Name}>
-                {option.Name}
-              </MenuItem>
-            ))}
-          </TextField>
+          <Autocomplete
+              id="clubLocation"
+              options={countries}
+              getOptionLabel={option => option.Name}
+              onInputChange={this.onChangeClubLocation}
+              renderInput={params => (
+                <TextField
+                  {...params}
+                  value={this.props.wizard.clubLocation ? this.props.wizard.clubLocation : ""}
+                  className={classes.selectField}
+                  label="Club Location"
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  helperText="Please select club location"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                />
+              )}
+            />
+              
         </Grid>
       </Grid>
     );
