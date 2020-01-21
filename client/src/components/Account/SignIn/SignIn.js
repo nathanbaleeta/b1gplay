@@ -34,7 +34,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    zoom: "80%"
+    zoom: "70%"
   },
   avatar: {
     margin: theme.spacing(1),
@@ -54,6 +54,12 @@ const styles = theme => ({
   notchedOutline: {
     borderWidth: "1px",
     borderColor: "black !important"
+  },
+  // Overiding css properties on material ui textbox rounded borders
+  textField: {
+    [`& fieldset`]: {
+      borderRadius: 0,
+    },
   }
 });
 
@@ -94,7 +100,7 @@ class SignIn extends Component {
 
     return (
       <Fragment>
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="sm">
           <CssBaseline />
           <div className={classes.paper}>
             <Avatar
@@ -116,6 +122,7 @@ class SignIn extends Component {
                 name="email"
                 value={email}
                 autoComplete="email"
+                className={classes.textField}
                 autoFocus
                 onChange={this.onChange}
                  InputProps={{
@@ -134,6 +141,7 @@ class SignIn extends Component {
                 label="Password"
                 type="password"
                 id="password"
+                className={classes.textField}
                 autoComplete="current-password"
                 onChange={this.onChange}
                  InputProps={{

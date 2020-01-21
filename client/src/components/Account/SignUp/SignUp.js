@@ -38,7 +38,7 @@ const styles = theme => ({
     //display: "flex",
     //flexDirection: "column",
     //alignItems: "center",
-    zoom: "75%"
+    zoom: "80%"
   },
   avatar: {
     margin: theme.spacing(3, 30, 2),

@@ -19,6 +19,12 @@ const styles = theme => ({
   notchedOutline: {
     borderWidth: "1px",
     borderColor: "black !important"
+  },
+  // Overiding css properties on material ui textbox rounded borders
+  textField: {
+    [`& fieldset`]: {
+      borderRadius: 0,
+    },
   }
 });
 

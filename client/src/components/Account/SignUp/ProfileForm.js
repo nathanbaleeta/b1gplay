@@ -9,18 +9,16 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import { countries } from "../../../utils/CountryList";
-
 
 import { connect } from "react-redux";
 import { updateField } from "../../../actions/wizard";
 
 const styles = theme => ({
   formControl: {
-    margin: theme.spacing(3),
+    margin: theme.spacing(1),
     minWidth: "100%",
     maxWidth: "auto"
   },
@@ -37,6 +35,12 @@ const styles = theme => ({
   notchedOutline: {
     borderWidth: "1px",
     borderColor: "black !important"
+  },
+  // Overiding css properties on material ui textbox rounded borders
+  textField: {
+    [`& fieldset`]: {
+      borderRadius: 0,
+    },
   }
 });
 
@@ -61,6 +65,7 @@ class ProfileForm extends Component {
             <Grid item xs={12} sm={12}>
               <TextField
                 id="firstname"
+                required
                 margin="normal"
                 variant="outlined"
                 fullWidth
@@ -79,6 +84,7 @@ class ProfileForm extends Component {
             <Grid item xs={12} sm={12}>
               <TextField
                 id="lastname"
+                required
                 label="Lastname"
                 className={classes.textField}
                 margin="normal"
@@ -123,6 +129,7 @@ class ProfileForm extends Component {
             <Grid item xs={12} sm={12}>
               <TextField
                 id="date"
+                required
                 label="Birthday"
                 type="date"
                 fullWidth
@@ -153,10 +160,11 @@ class ProfileForm extends Component {
                 <TextField
                   {...params}
                   value={this.props.wizard.countryOfOrigin ? this.props.wizard.countryOfOrigin : ""}
-                  className={classes.selectField}
+                  className={classes.textField}
                   label="Country of Origin"
                   variant="outlined"
                   margin="normal"
+                  required
                   fullWidth
                   helperText="Please select country"
                   InputLabelProps={{

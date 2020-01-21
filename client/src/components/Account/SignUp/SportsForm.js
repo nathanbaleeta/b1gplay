@@ -39,6 +39,12 @@ const styles = theme => ({
   notchedOutline: {
     borderWidth: "1px",
     borderColor: "black !important"
+  },
+  // Overiding css properties on material ui textbox rounded borders
+  textField: {
+    [`& fieldset`]: {
+      borderRadius: 0,
+    },
   }
 });
 
@@ -157,7 +163,7 @@ class SportsForm extends React.Component {
             fullWidth
             margin="normal"
             variant="outlined"
-            style={{ textAlign: "left" }}
+            className={classes.textField}
             helperText="Please select position"
             InputLabelProps={{
               shrink: true
@@ -197,7 +203,6 @@ class SportsForm extends React.Component {
         </Grid>
         <Grid item xs={4} sm={4}>
           <TextField
-            required
             id="outlined-uncontrolled"
             label="Weight"
             type="number"
@@ -218,7 +223,6 @@ class SportsForm extends React.Component {
 
         <Grid item xs={4} sm={4}>
           <TextField
-            required
             id="outlined-uncontrolled"
             label="Wingspan"
             type="number"
@@ -238,7 +242,6 @@ class SportsForm extends React.Component {
         </Grid>
         <Grid item xs={4} sm={4}>
           <TextField
-            required
             id="outlined-uncontrolled"
             label="Vertical leap"
             type="number"
@@ -258,7 +261,6 @@ class SportsForm extends React.Component {
         </Grid>
         <Grid item xs={4} sm={4}>
           <TextField
-            required
             id="outlined-uncontrolled"
             label="Time to run 40m"
             type="number"
@@ -278,7 +280,6 @@ class SportsForm extends React.Component {
         </Grid>
         <Grid item xs={6} sm={6}>
           <TextField
-            required
             id="outlined-uncontrolled"
             label="Time to run 100m"
             type="number"
@@ -325,7 +326,7 @@ class SportsForm extends React.Component {
                 <TextField
                   {...params}
                   value={this.props.wizard.clubLocation ? this.props.wizard.clubLocation : ""}
-                  className={classes.selectField}
+                  className={classes.textField}
                   label="Club Location"
                   variant="outlined"
                   margin="normal"
@@ -356,7 +357,7 @@ class SportsForm extends React.Component {
             margin="normal"
             variant="outlined"
             fullWidth
-            className={classes.selectField}
+            className={classes.textField}
             helperText="Please select Account type"
             InputLabelProps={{
               shrink: true
