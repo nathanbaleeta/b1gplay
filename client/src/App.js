@@ -7,6 +7,7 @@ import SignIn from "./components/Account/SignIn/";
 import SignUp from "./components/Account/SignUp/";
 import Home from "./components/Home";
 
+
 import AuthenticatedRoute from "./components/common/AuthenticatedRoute";
 
 const App = () => (

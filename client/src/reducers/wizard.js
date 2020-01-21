@@ -17,71 +17,71 @@ export default function(state = initialState, action) {
     case UPDATE_COACH_FIELDS:
       return {
         ...state,
-        affiliation: null,
-        mediaHouse: null,
-        weight: null,
-        height: null,
-        position: null,
-        verticalLeap: null,
-        wingspan: null,
-        time40m: null,
-        time100m: null,
-        club: null,
-        clubLocation: null,
+        affiliation: "",
+        mediaHouse: "",
+        weight: "",
+        height: "",
+        position: "",
+        verticalLeap: "",
+        wingspan: "",
+        time40m: "",
+        time100m: "",
+        club: "",
+        clubLocation: "",
         [action.field]: action.value
       };
     case UPDATE_PLAYER_FIELDS:
       return {
         ...state,
-        affiliation: null,
-        mediaHouse: null,
+        affiliation: "",
+        mediaHouse: "",
         [action.field]: action.value
       };
     case UPDATE_MEDIA_FIELDS:
       return {
         ...state,
-        affiliation: null,
-        weight: null,
-        height: null,
-        position: null,
-        verticalLeap: null,
-        wingspan: null,
-        time40m: null,
-        time100m: null,
-        club: null,
-        clubLocation: null,
+        affiliation: "",
+        weight: "",
+        height: "",
+        position: "",
+        verticalLeap: "",
+        wingspan: "",
+        time40m: "",
+        time100m: "",
+        club: "",
+        clubLocation: "",
         [action.field]: action.value
       };
     case UPDATE_FAN_FIELDS:
       return {
         ...state,
-        affiliation: null,
-        mediaHouse: null,
-        weight: null,
-        height: null,
-        position: null,
-        verticalLeap: null,
-        wingspan: null,
-        time40m: null,
-        time100m: null,
-        club: null,
-        clubLocation: null,
+        affiliation: "",
+        mediaHouse: "",
+        weight: "",
+        height: "",
+        position: "",
+        verticalLeap: "",
+        wingspan: "",
+        time40m: "",
+        time100m: "",
+        club: "",
+        clubLocation: "",
         [action.field]: action.value
       };
     case UPDATE_AGENT_FIELDS:
       return {
         ...state,
-        affiliation: null,
-        mediaHouse: null,
-        weight: null,
-        height: null,
-        position: null,
-        verticalLeap: null,
-        wingspan: null,
-        time40m: null,
-        time100m: null,
-        club: null,
-        clubLocation: null,
+        affiliation: "",
+        mediaHouse: "",
+        weight: "",
+        height: "",
+        position: "",
+        verticalLeap: "",
+        wingspan: "",
+        time40m: "",
+        time100m: "",
+        club: "",
+        clubLocation: "",
         [action.field]: action.value
       };
     case CLEAR_FIELDS:
@@ -89,26 +89,26 @@ export default function(state = initialState, action) {
       localStorage.removeItem("password2");
       return {
         ...state,
-        firstname: null,
-        lastname: null,
-        gender: null,
-        dob: null,
-        countryOfOrigin: null,
+        firstname: "",
+        lastname: "",
+        gender: "",
+        dob: "",
+        countryOfOrigin: "",
 
-        email: null,
+        email: "",
 
-        affiliation: null,
-        mediaHouse: null,
+        affiliation: "",
+        mediaHouse: "",
 
-        weight: null,
-        height: null,
-        position: null,
-        verticalLeap: null,
-        wingspan: null,
-        time40m: null,
-        time100m: null,
-        club: null,
-        clubLocation: null
+        weight: "",
+        height: "",
+        position: "",
+        verticalLeap: "",
+        wingspan: "",
+        time40m: "",
+        time100m: "",
+        club: "",
+        clubLocation: ""
       };
 
     default:

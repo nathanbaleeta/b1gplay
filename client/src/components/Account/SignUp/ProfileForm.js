@@ -9,24 +9,23 @@ import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
-import MenuItem from "@material-ui/core/MenuItem";
+
+import Autocomplete from "@material-ui/lab/Autocomplete";
 
 import { countries } from "../../../utils/CountryList";
 
-//import Select from "react-select";
-//import countryList from "react-select-country-list";
 
 import { connect } from "react-redux";
 import { updateField } from "../../../actions/wizard";
 
 const styles = theme => ({
   formControl: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(3),
     minWidth: "100%",
     maxWidth: "auto"
   },
   selectField: {
-    margin: theme.spacing.unit * 3,
+    margin: theme.spacing(3),
     width: "100%",
     textAlign: "left",
     fontFamily: "Arial",
@@ -48,12 +47,16 @@ class ProfileForm extends Component {
     this.props.updateField(e.target.name, e.target.value);
   };
 
+  handleChange = (event, value) => {
+    this.props.updateField('countryOfOrigin', value);
+  };
+
   render() {
     const { classes } = this.props;
 
     return (
       <Fragment>
-        <Grid container spacing={24}>
+        <Grid container spacing={10}>
           <Grid item xs={12} sm={12}>
             <Grid item xs={12} sm={12}>
               <TextField
@@ -64,7 +67,7 @@ class ProfileForm extends Component {
                 className={classes.textField}
                 label="Firstname"
                 name="firstname"
-                value={this.props.wizard.firstname}
+                value={this.props.wizard.firstname ? this.props.wizard.firstname : ""}
                 onChange={this.onChange}
                 InputProps={{
                   classes: {
@@ -82,7 +85,7 @@ class ProfileForm extends Component {
                 variant="outlined"
                 fullWidth
                 name="lastname"
-                value={this.props.wizard.lastname}
+                value={this.props.wizard.lastname ? this.props.wizard.lastname : ""}
                 onChange={this.onChange}
                 InputProps={{
                   classes: {
@@ -101,7 +104,7 @@ class ProfileForm extends Component {
                   aria-label="Gender"
                   className={classes.group}
                   name="gender"
-                  value={this.props.wizard.gender}
+                  value={this.props.wizard.gender ? this.props.wizard.gender : ""}
                   onChange={this.onChange}
                 >
                   <FormControlLabel
@@ -127,7 +130,7 @@ class ProfileForm extends Component {
                 className={classes.textField}
                 margin="dense"
                 name="dob"
-                value={this.props.wizard.dob}
+                value={this.props.wizard.dob ? this.props.wizard.dob : ""}
                 onChange={this.onChange}
                 InputLabelProps={{
                   shrink: true
@@ -139,34 +142,32 @@ class ProfileForm extends Component {
                 }}
               />
             </Grid>
+    
             <Grid item xs={12} sm={12}>
-              <TextField
-                id="country_of_origin"
-                select
-                className={classes.selectField}
-                name="countryOfOrigin"
-                value={this.props.wizard.countryOfOrigin}
-                onChange={this.onChange}
-                label="Country of Origin:"
-                fullWidth
-                margin="normal"
-                variant="outlined"
-                helperText="Please select country"
-                InputLabelProps={{
-                  shrink: true
-                }}
-                InputProps={{
-                  classes: {
-                    notchedOutline: classes.notchedOutline
-                  }
-                }}
-              >
-                {countries.map(option => (
-                  <MenuItem key={option.Code} value={option.Name}>
-                    {option.Name}
-                  </MenuItem>
-                ))}
-              </TextField>
+          <Autocomplete
+              id="country_of_origin"
+              options={countries}
+              getOptionLabel={option => option.Name}
+              onInputChange={this.handleChange}
+              renderInput={params => (
+                <TextField
+                  {...params}
+                  value={this.props.wizard.countryOfOrigin ? this.props.wizard.countryOfOrigin : ""}
+                  className={classes.selectField}
+                  label="Country of Origin"
+                  variant="outlined"
+                  margin="normal"
+                  fullWidth
+                  helperText="Please select country"
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+
+
+                />
+              )}
+            />
+              
             </Grid>
           </Grid>
         </Grid>

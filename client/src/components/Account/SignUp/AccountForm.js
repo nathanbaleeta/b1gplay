@@ -11,7 +11,7 @@ import { updateField } from "../../../actions/wizard";
 
 const styles = theme => ({
   formControl: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     minWidth: "100%",
     maxWidth: "auto"
   },
@@ -44,7 +44,7 @@ class AccountForm extends Component {
 
     return (
       <Fragment>
-        <Grid container spacing={24}>
+        <Grid container spacing={10}>
           <Grid item xs={12} sm={12}>
             <Grid item xs={12} sm={12}>
               <TextField
@@ -56,7 +56,7 @@ class AccountForm extends Component {
                 variant="outlined"
                 fullWidth
                 name="email"
-                value={this.props.wizard.email}
+                value={this.props.wizard.email ? this.props.wizard.email : ""}
                 onChange={this.onChange}
                 InputProps={{
                   classes: {
