@@ -101,7 +101,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="affiliation"
-            value={this.props.wizard.affiliation}
+            value={this.props.wizard.affiliation ? this.props.wizard.affiliation : ""}
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -124,7 +124,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="mediaHouse"
-            value={this.props.wizard.mediaHouse}
+            value={this.props.wizard.mediaHouse ? this.props.wizard.mediaHouse : ""}
             onChange={this.onChange}
             /*  InputLabelProps={{
               shrink: true
@@ -146,7 +146,7 @@ class SportsForm extends React.Component {
             id="position"
             select
             name="position"
-            value={this.props.wizard.position}
+            value={this.props.wizard.position ? this.props.wizard.position : ""}
             onChange={this.onChange}
             label="Position:"
             fullWidth
@@ -181,7 +181,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="height"
-            value={this.props.wizard.height}
+            value={this.props.wizard.height ? this.props.wizard.height : ""}
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -201,7 +201,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="weight"
-            value={this.props.wizard.weight}
+            value={this.props.wizard.weight ? this.props.wizard.weight : ""}
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -222,7 +222,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="wingspan"
-            value={this.props.wizard.wingspan}
+            value={this.props.wizard.wingspan ? this.props.wizard.wingspan : ""}
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -242,7 +242,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="verticalLeap"
-            value={this.props.wizard.verticalLeap}
+            value={this.props.wizard.verticalLeap ? this.props.wizard.verticalLeap : ""}
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -262,7 +262,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="time40m"
-            value={this.props.wizard.time40m}
+            value={this.props.wizard.time40m ? this.props.wizard.time40m : ""}
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -282,7 +282,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="time100m"
-            value={this.props.wizard.time100m}
+            value={this.props.wizard.time100m ? this.props.wizard.time100m : ""}
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -300,7 +300,7 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="club"
-            value={this.props.wizard.club}
+            value={this.props.wizard.club ? this.props.wizard.club : ""}
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -316,7 +316,7 @@ class SportsForm extends React.Component {
             select
             className={classes.selectField}
             name="clubLocation"
-            value={this.props.wizard.clubLocation}
+            value={this.props.wizard.clubLocation ? this.props.wizard.clubLocation : ""}
             onChange={this.onChange}
             label="Club Location:"
             fullWidth
@@ -350,7 +350,7 @@ class SportsForm extends React.Component {
             id="accountType"
             select
             name="accountType"
-            value={this.props.wizard.accountType}
+            value={this.props.wizard.accountType ? this.props.wizard.accountType : ""}
             onChange={this.onChange}
             label="Account type"
             margin="normal"
