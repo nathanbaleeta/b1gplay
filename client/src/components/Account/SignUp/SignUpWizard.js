@@ -19,6 +19,7 @@ import { connect } from "react-redux";
 import { signUp } from "../../../actions/auth";
 import { clearFields } from "../../../actions/wizard";
 
+
 const styles = theme => ({
   stepper: {
     padding: `${theme.spacing(3)}px 0 ${theme.spacing(5)}px`,
@@ -33,9 +34,9 @@ const styles = theme => ({
     marginLeft: theme.spacing(1),
     backgroundColor: "#C12424",
     color: "#FFFFFF",
-    fontSize: '170%',
-    maxHeight: '60px', 
-    minHeight: '60px'
+    fontSize: '140%',
+    maxHeight: '45px', 
+    minHeight: '45px'
   },
   link: {
     textDecoration: "none",
@@ -67,60 +68,64 @@ class SignUpWizard extends Component {
   onSubmit = event => {
     event.preventDefault();
 
-    // Extract values from external state
-    const email = this.props.wizard.email;
+    // Extract password fields
     const password = localStorage.getItem("password");
     const password2 = localStorage.getItem("password2");
 
-    const firstname = this.props.wizard.firstname;
-    const lastname = this.props.wizard.lastname;
-    const gender = this.props.wizard.gender;
-    const dob = this.props.wizard.dob;
-    const countryOfOrigin = this.props.wizard.countryOfOrigin;
+    // const account_type = this.props.wizard.accountType;
 
-    const account_type = this.props.wizard.accountType;
-    const media_house = this.props.wizard.mediaHouse;
+    // const position = this.props.wizard.position;
+    // const height = this.props.wizard.height;
+    // const weight = this.props.wizard.weight;
+    // const wingspan = this.props.wizard.wingspan;
+    // const vertical_leap = this.props.wizard.verticalLeap;
+    // const time_to_run_40m = this.props.wizard.time40m;
+    // const time_to_run_100m = this.props.wizard.time100m;
+    // const affiliation = this.props.wizard.affiliation;
+    
+    // const media_house = this.props.wizard.mediaHouse;
+    // const club = this.props.wizard.club;
+    // const club_location = this.props.wizard.clubLocation;
 
-    const position = this.props.wizard.position;
-    const height = this.props.wizard.height;
-    const weight = this.props.wizard.weight;
-    const wingspan = this.props.wizard.wingspan;
-    const vertical_leap = this.props.wizard.verticalLeap;
-    const time_to_run_40m = this.props.wizard.time40m;
-    const time_to_run_100m = this.props.wizard.time100m;
-    const affiliation = this.props.wizard.affiliation;
-    const club = this.props.wizard.club;
-    const clubLocation = this.props.wizard.clubLocation;
-
+    // Verify password fields match before account creation attempt
     if (password !== password2) {
       console.log("Passwords do not match");
       //this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
     } else {
-      const newUser = {
-        email,
-        password,
-        firstname,
-        lastname,
-        gender,
-        dob,
-        countryOfOrigin,
-        account_type,
-        media_house,
-        position,
-        height,
-        weight,
-        wingspan,
-        vertical_leap,
-        time_to_run_40m,
-        time_to_run_100m,
-        affiliation,
-        club,
-        clubLocation
-      };
-      console.log(newUser)
-      //this.props.register(newUser);
+        // Extract values from global state
+        const email = this.props.wizard.email;
 
-      // Clear textfields in sign up form and redux state
+        const first_name = this.props.wizard.firstname;
+        const last_name = this.props.wizard.lastname;
+
+        const gender = this.props.wizard.gender;
+        const birth_date = this.props.wizard.dob;
+        const country_of_origin = this.props.wizard.countryOfOrigin;
+        
+        // account_type,
+        // media_house,
+        // position,
+        // height,
+        // weight,
+        // wingspan,
+        // vertical_leap,
+        // time_to_run_40m,
+        // time_to_run_100m,
+        // affiliation,
+        // club,
+        // club_location
+      
+      this.props.signUp(
+          email, 
+          password, 
+          first_name, 
+          last_name, 
+          gender, 
+          birth_date, 
+          country_of_origin
+        );
+
+     // Clear textfields in sign up form and redux state
       this.props.clearFields();
     }
   };
@@ -241,6 +246,7 @@ SignUpWizard.propTypes = {
   classes: PropTypes.object.isRequired,
   signUp: PropTypes.func.isRequired,
   clearFields: PropTypes.func.isRequired,
+  wizard: PropTypes.object.isRequired,
   isAuthenticated: PropTypes.bool
 };
 

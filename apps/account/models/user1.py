@@ -5,6 +5,7 @@ import uuid
 from django.urls import reverse
 from django.contrib.auth.models import BaseUserManager
 
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -21,45 +22,44 @@ class UserManager(BaseUserManager):
                     gender,
                     country_of_origin,
                     birth_date,
-                    # account_type,
-                    # profile_photo=None,
-                    # cover_photo=None,
-                    # tag=None,
-                    # club=None,
-                    # club_location=None,
-                    # affiliation=None,
-                    # media_house=None,
-                    # position=None,
-                    # height=None,
-                    # weight=None,
-                    # wingspan=None,
-                    # vertical_leap=None,
-                    # time_to_run_40m=None,
-                    # time_to_run_100m=None
+                    account_type,
+                    profile_photo=None,
+                    cover_photo=None,
+                    tag=None,
+                    club=None,
+                    club_location=None,
+                    affiliation=None,
+                    media_house=None,
+                    position=None,
+                    height=None,
+                    weight=None,
+                    wingspan=None,
+                    vertical_leap=None,
+                    time_to_run_40m=None,
+                    time_to_run_100m=None
                     ):
-        user = self.model(
-                          first_name=first_name,
+        user = self.model(first_name=first_name,
                           last_name=last_name,
                           email=email,
                           password=password,
                           gender=gender,
                           country_of_origin=country_of_origin,
                           birth_date=birth_date,
-                          # account_type=account_type,
-                          # profile_photo=profile_photo,
-                          # cover_photo=cover_photo,
-                          # tag=tag,
-                          # club=club,
-                          # club_location=club_location,
-                          # affiliation=affiliation,
-                          # media_house=media_house,
-                          # position=position,
-                          # height=height,
-                          # weight=weight,
-                          # wingspan=wingspan,
-                          # vertical_leap=vertical_leap,
-                          # time_to_run_40m=time_to_run_40m,
-                          # time_to_run_100m=time_to_run_100m
+                          account_type=account_type,
+                          profile_photo=profile_photo,
+                          cover_photo=cover_photo,
+                          tag=tag,
+                          club=club,
+                          club_location=club_location,
+                          affiliation=affiliation,
+                          media_house=media_house,
+                          position=position,
+                          height=height,
+                          weight=weight,
+                          wingspan=wingspan,
+                          vertical_leap=vertical_leap,
+                          time_to_run_40m=time_to_run_40m,
+                          time_to_run_100m=time_to_run_100m
                           )
         user.set_password(password)
         user.is_staff = False
@@ -71,49 +71,48 @@ class UserManager(BaseUserManager):
                          first_name,
                          last_name,
                          email,
-                         password,
                          gender,
+                         password,
                          country_of_origin,
                          birth_date,
-                         # account_type,
-                         # profile_photo=None,
-                         # cover_photo=None,
-                         # tag=None,
-                         # club=None,
-                         # club_location=None,
-                         # affiliation=None,
-                         # media_house=None,
-                         # position=None,
-                         # height=None,
-                         # weight=None,
-                         # wingspan=None,
-                         # vertical_leap=None,
-                         # time_to_run_40m=None,
-                         # time_to_run_100m=None
+                         account_type,
+                         profile_photo=None,
+                         cover_photo=None,
+                         tag=None,
+                         club=None,
+                         club_location=None,
+                         affiliation=None,
+                         media_house=None,
+                         position=None,
+                         height=None,
+                         weight=None,
+                         wingspan=None,
+                         vertical_leap=None,
+                         time_to_run_40m=None,
+                         time_to_run_100m=None
                          ):
-        user = self.model(
-                          first_name=first_name,
+        user = self.model(first_name=first_name,
                           last_name=last_name,
                           email=email,
                           password=password,
                           gender=gender,
                           country_of_origin=country_of_origin,
                           birth_date=birth_date,
-                          # account_type=account_type,
-                          # profile_photo=profile_photo,
-                          # cover_photo=cover_photo,
-                          # tag=tag,
-                          # club=club,
-                          # club_location=club_location,
-                          # affiliation=affiliation,
-                          # media_house=media_house,
-                          # position=position,
-                          # height=height,
-                          # weight=weight,
-                          # wingspan=wingspan,
-                          # vertical_leap=vertical_leap,
-                          # time_to_run_40m=time_to_run_40m,
-                          # time_to_run_100m=time_to_run_100m
+                          account_type=account_type,
+                          profile_photo=profile_photo,
+                          cover_photo=cover_photo,
+                          tag=tag,
+                          club=club,
+                          club_location=club_location,
+                          affiliation=affiliation,
+                          media_house=media_house,
+                          position=position,
+                          height=height,
+                          weight=weight,
+                          wingspan=wingspan,
+                          vertical_leap=vertical_leap,
+                          time_to_run_40m=time_to_run_40m,
+                          time_to_run_100m=time_to_run_100m
                           )
         user.set_password(password)
         user.is_active = True
@@ -206,6 +205,7 @@ class User(AbstractUser):
     media_house = models.CharField(max_length=100, blank=True)
 
     # Player details
+    # position = models.CharField(max_length=100, blank=True)
     position = models.CharField(
         max_length=20,
         choices=POSITION_CHOICES,
@@ -250,21 +250,21 @@ class User(AbstractUser):
         'gender',
         'country_of_origin',
         'birth_date',
-        # 'account_type',
-        # 'club',
-        # 'club_location',
-        # 'tag',
-        # 'profile_photo',
-        # 'cover_photo',
-        # 'affiliation',
-        # 'media_house',
-        # 'position',
-        # 'height',
-        # 'weight',
-        # 'wingspan',
-        # 'vertical_leap',
-        # 'time_to_run_40m',
-        # 'time_to_run_100m'
+        'account_type',
+        'club',
+        'club_location',
+        'tag',
+        'profile_photo',
+        'cover_photo',
+        'affiliation',
+        'media_house',
+        'position',
+        'height',
+        'weight',
+        'wingspan',
+        'vertical_leap',
+        'time_to_run_40m',
+        'time_to_run_100m'
     ]
 
     USERNAME_FIELD = 'email'
@@ -279,15 +279,11 @@ class User(AbstractUser):
     def get_absolute_url(self):
         return reverse('user-detail', args=[str(self.id)])
 
-    #def __str__(self):
-    #    return f'{self.first_name} {self.last_name}'
-
     def __str__(self):
-        return f'{self.email}'
+        return f'{self.first_name} {self.last_name}'
 
 
-
-#@receiver(post_save, sender=User)
+@receiver(post_save, sender=User)
 def create_user_node(sender, instance, created, **kwargs):
     """
     Creates the user node on the graph database.
@@ -347,7 +343,7 @@ def create_user_node(sender, instance, created, **kwargs):
                   ).evaluate()
 
 
-#@receiver(post_save, sender=User)
+@receiver(post_save, sender=User)
 def update_user_node(sender, instance, **kwargs):
     graph = Graph(host="localhost", user="neo4j", password="admin1234")
     query = '''

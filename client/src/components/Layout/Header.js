@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -9,7 +10,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import InputBase from "@material-ui/core/InputBase";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import { withStyles } from "@material-ui/core/styles";
+
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
@@ -18,9 +19,21 @@ import PollIcon from "@material-ui/icons/Poll";
 import SearchIcon from "@material-ui/icons/Search";
 import PersonIcon from "@material-ui/icons/Person";
 import Avatar from "@material-ui/core/Avatar";
+
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { Redirect } from "react-router-dom";
+
+
+
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+
 
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
@@ -132,13 +145,21 @@ const styles = theme => ({
     [theme.breakpoints.up("md")]: {
       display: "none"
     }
-  }
+  },
+  // Drawer CSS
+   list: {
+    width: 400,
+  },
+  fullList: {
+    width: 'auto',
+  },
 });
 
 class Header extends Component {
   state = {
     anchorEl: null,
-    mobileMoreAnchorEl: null
+    mobileMoreAnchorEl: null,
+    rightDrawer: false
   };
 
   logoutUser = () => {
@@ -161,12 +182,20 @@ class Header extends Component {
     this.setState({ mobileMoreAnchorEl: null });
   };
 
+  openDrawer = () => {
+      this.setState({ rightDrawer: true });
+    };
+
+  closeDrawer = () => {
+      this.setState({ rightDrawer: false });
+    };
+
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+   
     if (!this.props.isAuthenticated) {
       return <Redirect to="/auth/login" />;
     }
@@ -229,8 +258,39 @@ class Header extends Component {
       </Menu>
     );
 
+    const sideList = side => (
+    <div
+      className={classes.list}
+      role="presentation"
+      onClick={this.state.rightDrawer}
+      onKeyDown={this.state.rightDrawer}
+    >
+      <List>
+        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List>
+        {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          <ListItem button key={text}>
+            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </div>
+  );
+
+
     return (
       <Fragment>
+      <Drawer anchor="right" open={this.state.rightDrawer} onClose={this.closeDrawer}>
+   {sideList('right')}
+</Drawer>
         <div className={classes.root}>
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
@@ -324,11 +384,12 @@ class Header extends Component {
                         to="/notifications"
                         className={classes.linkMenuItems}
                       >
-                        <IconButton color="inherit">
+                        <IconButton color="inherit" onClick={this.openDrawer}>
                           <NotificationsIcon
                             style={{ height: 40, width: 40 }}
                           />
                         </IconButton>
+
 
                         {/*       <Typography
                           variant="body2"

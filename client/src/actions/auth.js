@@ -12,37 +12,45 @@ import {
 } from "../constants/ActionTypes";
 
 // SIGN UP USER
-export const signUp = (first_name, last_name, email, password) => dispatch => {
+export const signUp = (
+          email, 
+          password, 
+          first_name, 
+          last_name, 
+          gender, 
+          birth_date, 
+          country_of_origin) => dispatch => {
   // Headers
   const config = {
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
+      "Content-Type": "application/json"
     }
   };
 
   // Request Body
-  const body = JSON.stringify({
-    first_name,
-    last_name,
-    email,
-    password
-  });
+  const body = JSON.stringify({ 
+          email, 
+          password, 
+          first_name, 
+          last_name, 
+          gender, 
+          birth_date, 
+          country_of_origin });
 
-  async function createUser() {
+  async function createAccount() {
     try {
       await axios
         .post("http://127.0.0.1:8000/auth/users/", body, config)
-        .then(res => {
+        .then(response => {
           dispatch({
             type: REGISTER_SUCCESS,
-            payload: res.data
+            payload: response.data
           });
         })
         .catch(err =>
           dispatch({
             type: REGISTER_FAILURE,
-            payload: err
+            payload: err.response.data
           })
         );
     } catch (error) {
@@ -50,8 +58,9 @@ export const signUp = (first_name, last_name, email, password) => dispatch => {
     }
   }
 
-  createUser();
+  createAccount();
 };
+
 
 // SIGN IN USER
 export const signIn = (email, password) => dispatch => {
@@ -131,7 +140,8 @@ export const logout = () => (dispatch, getState) => {
 // Setup config with token - helper function
 export const tokenConfig = getState => {
   // Get token from state
-  const token = getState().auth.auth_token;
+  //const token = getState().auth.auth_token;
+  const token = localStorage.getItem("auth_token");
 
   // Headers
   const config = {

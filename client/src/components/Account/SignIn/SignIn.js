@@ -49,8 +49,9 @@ const styles = theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     background: "#C12424",
-    fontSize: '180%',
-    maxHeight: '60px', minHeight: '60px'
+    fontSize: '150%',
+    maxHeight: '50px', 
+    minHeight: '50px'
   },
   // Overiding css properties on material ui textbox
   notchedOutline: {

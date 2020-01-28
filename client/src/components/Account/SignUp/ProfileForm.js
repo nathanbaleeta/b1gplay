@@ -45,7 +45,7 @@ const styles = theme => ({
 });
 
 class ProfileForm extends Component {
-  state = {};
+  state = {}
 
   onChange = e => {
     this.props.updateField(e.target.name, e.target.value);
@@ -53,6 +53,9 @@ class ProfileForm extends Component {
 
   onChangeCountryOfOrigin = (event, value) => {
     this.props.updateField('countryOfOrigin', value);
+    this.setState({
+      countryOfOrigin: value
+    });
   };
 
   render() {
@@ -153,25 +156,29 @@ class ProfileForm extends Component {
             <Grid item xs={12} sm={12}>
           <Autocomplete
               id="country_of_origin"
-              options={countries}
-              getOptionLabel={option => option.Name}
               onInputChange={this.onChangeCountryOfOrigin}
+              options={countries}
+              getOptionLabel={option => option.Name }
+              renderOption={option => (
+              <Fragment>
+                <span>{option.Name}</span>
+              </Fragment>
+            )}
               renderInput={params => (
                 <TextField
                   {...params}
-                  value={this.props.wizard.countryOfOrigin ? this.props.wizard.countryOfOrigin : ""}
+                  value={ this.props.wizard.countryOfOrigin }
                   className={classes.textField}
                   label="Country of Origin"
                   variant="outlined"
                   margin="normal"
+                  placeholder="Country of Origin"
                   required
                   fullWidth
-                  helperText="Please select country"
+                  helperText="Please select country"    
                   InputLabelProps={{
                     shrink: true
                   }}
-
-
                 />
               )}
             />
@@ -186,6 +193,7 @@ class ProfileForm extends Component {
 
 ProfileForm.propTypes = {
   classes: PropTypes.object.isRequired,
+  wizard: PropTypes.object.isRequired,
   updateField: PropTypes.func.isRequired
 };
 
