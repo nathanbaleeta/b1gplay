@@ -165,9 +165,13 @@ class User(AbstractUser):
         (SMALL_FORWARD, 'Small forward'),
     )
 
-    # Make firstname mandatory
-    id = models.CharField(primary_key=True, default=uuid.uuid4,
-                          max_length=100, editable=False)
+    # Generate userID as a uuid field
+    id = models.CharField(
+        primary_key=True,
+        default=str(uuid.uuid4()),
+        max_length=100,
+        editable=False
+    )
     email = models.EmailField(
         max_length=255, unique=True)
     first_name = models.CharField(max_length=30)  # Make firstname mandatory
@@ -286,7 +290,7 @@ class User(AbstractUser):
         return f'{self.first_name} {self.last_name}'
 
 
-# @receiver(post_save, sender=User)
+@receiver(post_save, sender=User)
 def create_user_node(sender, instance, created, **kwargs):
     """
     Creates the user node on the graph database.
@@ -346,7 +350,7 @@ def create_user_node(sender, instance, created, **kwargs):
                   ).evaluate()
 
 
-# @receiver(post_save, sender=User)
+@receiver(post_save, sender=User)
 def update_user_node(sender, instance, **kwargs):
     graph = Graph(host="localhost", user="neo4j", password="admin1234")
     query = '''
