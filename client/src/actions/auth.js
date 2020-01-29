@@ -24,7 +24,10 @@ export const signUp = (
   affiliation,
   media_house,
   club,
-  club_location
+  club_location,
+  position,
+  height,
+  weight
 ) => dispatch => {
   // Headers
   const config = {
@@ -49,7 +52,10 @@ export const signUp = (
     affiliation,
     media_house,
     club,
-    club_location
+    club_location,
+    position,
+    height,
+    weight
   });
 
   async function createAccount() {

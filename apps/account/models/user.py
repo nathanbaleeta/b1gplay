@@ -29,38 +29,38 @@ class UserManager(BaseUserManager):
                     club_location=None,
                     affiliation=None,
                     media_house=None,
-                    # position=None,
-                    # height=None,
-                    # weight=None,
+                    position=None,
+                    height=None,
+                    weight=None,
                     # wingspan=None,
                     # vertical_leap=None,
                     # time_to_run_40m=None,
                     # time_to_run_100m=None
                     ):
         user = self.model(
-                          first_name=first_name,
-                          last_name=last_name,
-                          email=email,
-                          password=password,
-                          gender=gender,
-                          country_of_origin=country_of_origin,
-                          birth_date=birth_date,
-                          account_type=account_type,
-                          # profile_photo=profile_photo,
-                          # cover_photo=cover_photo,
-                          tag=tag,
-                          club=club,
-                          club_location=club_location,
-                          affiliation=affiliation,
-                          media_house=media_house,
-                          # position=position,
-                          # height=height,
-                          # weight=weight,
-                          # wingspan=wingspan,
-                          # vertical_leap=vertical_leap,
-                          # time_to_run_40m=time_to_run_40m,
-                          # time_to_run_100m=time_to_run_100m
-                          )
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            password=password,
+            gender=gender,
+            country_of_origin=country_of_origin,
+            birth_date=birth_date,
+            account_type=account_type,
+            # profile_photo=profile_photo,
+            # cover_photo=cover_photo,
+            tag=tag,
+            club=club,
+            club_location=club_location,
+            affiliation=affiliation,
+            media_house=media_house,
+            position=position,
+            height=height,
+            weight=weight,
+            # wingspan=wingspan,
+            # vertical_leap=vertical_leap,
+            # time_to_run_40m=time_to_run_40m,
+            # time_to_run_100m=time_to_run_100m
+        )
         user.set_password(password)
         user.is_staff = False
         user.is_superuser = False
@@ -83,38 +83,38 @@ class UserManager(BaseUserManager):
                          club_location=None,
                          affiliation=None,
                          media_house=None,
-                         # position=None,
-                         # height=None,
-                         # weight=None,
+                         position=None,
+                         height=None,
+                         weight=None,
                          # wingspan=None,
                          # vertical_leap=None,
                          # time_to_run_40m=None,
                          # time_to_run_100m=None
                          ):
         user = self.model(
-                          first_name=first_name,
-                          last_name=last_name,
-                          email=email,
-                          password=password,
-                          gender=gender,
-                          country_of_origin=country_of_origin,
-                          birth_date=birth_date,
-                          account_type=account_type,
-                          # profile_photo=profile_photo,
-                          # cover_photo=cover_photo,
-                          tag=tag,
-                          club=club,
-                          club_location=club_location,
-                          affiliation=affiliation,
-                          media_house=media_house,
-                          # position=position,
-                          # height=height,
-                          # weight=weight,
-                          # wingspan=wingspan,
-                          # vertical_leap=vertical_leap,
-                          # time_to_run_40m=time_to_run_40m,
-                          # time_to_run_100m=time_to_run_100m
-                          )
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            password=password,
+            gender=gender,
+            country_of_origin=country_of_origin,
+            birth_date=birth_date,
+            account_type=account_type,
+            # profile_photo=profile_photo,
+            # cover_photo=cover_photo,
+            tag=tag,
+            club=club,
+            club_location=club_location,
+            affiliation=affiliation,
+            media_house=media_house,
+            position=position,
+            height=height,
+            weight=weight,
+            # wingspan=wingspan,
+            # vertical_leap=vertical_leap,
+            # time_to_run_40m=time_to_run_40m,
+            # time_to_run_100m=time_to_run_100m
+        )
         user.set_password(password)
         user.is_active = True
         user.is_staff = True
@@ -258,9 +258,9 @@ class User(AbstractUser):
         # 'cover_photo',
         'affiliation',
         'media_house',
-        # 'position',
-        # 'height',
-        # 'weight',
+        'position',
+        'height',
+        'weight',
         # 'wingspan',
         # 'vertical_leap',
         # 'time_to_run_40m',
@@ -283,9 +283,7 @@ class User(AbstractUser):
         return f'{self.first_name} {self.last_name}'
 
 
-
-
-#@receiver(post_save, sender=User)
+# @receiver(post_save, sender=User)
 def create_user_node(sender, instance, created, **kwargs):
     """
     Creates the user node on the graph database.
@@ -345,7 +343,7 @@ def create_user_node(sender, instance, created, **kwargs):
                   ).evaluate()
 
 
-#@receiver(post_save, sender=User)
+# @receiver(post_save, sender=User)
 def update_user_node(sender, instance, **kwargs):
     graph = Graph(host="localhost", user="neo4j", password="admin1234")
     query = '''

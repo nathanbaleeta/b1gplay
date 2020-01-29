@@ -71,9 +71,6 @@ class SignUpWizard extends Component {
     const password = localStorage.getItem("password");
     const password2 = localStorage.getItem("password2");
 
-    // const position = this.props.wizard.position;
-    // const height = this.props.wizard.height;
-    // const weight = this.props.wizard.weight;
     // const wingspan = this.props.wizard.wingspan;
     // const vertical_leap = this.props.wizard.verticalLeap;
     // const time_to_run_40m = this.props.wizard.time40m;
@@ -102,6 +99,10 @@ class SignUpWizard extends Component {
       const club = this.props.wizard.club;
       const club_location = this.props.wizard.clubLocation;
 
+      const position = this.props.wizard.position;
+      const height = this.props.wizard.height;
+      const weight = this.props.wizard.weight;
+
       // account_type,
       // media_house,
       // position,
@@ -127,7 +128,10 @@ class SignUpWizard extends Component {
         affiliation,
         media_house,
         club,
-        club_location
+        club_location,
+        position,
+        height,
+        weight
       );
 
       // Clear textfields in sign up form and redux state
