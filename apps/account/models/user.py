@@ -165,6 +165,9 @@ class User(AbstractUser):
         (SMALL_FORWARD, 'Small forward'),
     )
 
+    # Make firstname mandatory
+    id = models.CharField(primary_key=True, default=uuid.uuid4,
+                          max_length=100, editable=False)
     email = models.EmailField(
         max_length=255, unique=True)
     first_name = models.CharField(max_length=30)  # Make firstname mandatory
