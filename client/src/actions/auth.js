@@ -21,6 +21,8 @@ export const signUp = (
   birth_date,
   country_of_origin,
   account_type,
+  affiliation,
+  media_house,
   club,
   club_location
 ) => dispatch => {
@@ -31,6 +33,8 @@ export const signUp = (
     }
   };
 
+  // Define empty variables
+  let tag = "";
   // Request Body
   const body = JSON.stringify({
     email,
@@ -40,7 +44,10 @@ export const signUp = (
     gender,
     birth_date,
     country_of_origin,
+    tag,
     account_type,
+    affiliation,
+    media_house,
     club,
     club_location
   });

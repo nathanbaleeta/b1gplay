@@ -78,9 +78,6 @@ class SignUpWizard extends Component {
     // const vertical_leap = this.props.wizard.verticalLeap;
     // const time_to_run_40m = this.props.wizard.time40m;
     // const time_to_run_100m = this.props.wizard.time100m;
-    // const affiliation = this.props.wizard.affiliation;
-
-    // const media_house = this.props.wizard.mediaHouse;
 
     // Verify password fields match before account creation attempt
     if (password !== password2) {
@@ -98,6 +95,9 @@ class SignUpWizard extends Component {
       const country_of_origin = this.props.wizard.countryOfOrigin;
 
       const account_type = this.props.wizard.accountType;
+
+      const affiliation = this.props.wizard.affiliation;
+      const media_house = this.props.wizard.mediaHouse;
 
       const club = this.props.wizard.club;
       const club_location = this.props.wizard.clubLocation;
@@ -124,6 +124,8 @@ class SignUpWizard extends Component {
         birth_date,
         country_of_origin,
         account_type,
+        affiliation,
+        media_house,
         club,
         club_location
       );
