@@ -13,13 +13,17 @@ import {
 
 // SIGN UP USER
 export const signUp = (
-          email, 
-          password, 
-          first_name, 
-          last_name, 
-          gender, 
-          birth_date, 
-          country_of_origin) => dispatch => {
+  email,
+  password,
+  first_name,
+  last_name,
+  gender,
+  birth_date,
+  country_of_origin,
+  account_type,
+  club,
+  club_location
+) => dispatch => {
   // Headers
   const config = {
     headers: {
@@ -28,14 +32,18 @@ export const signUp = (
   };
 
   // Request Body
-  const body = JSON.stringify({ 
-          email, 
-          password, 
-          first_name, 
-          last_name, 
-          gender, 
-          birth_date, 
-          country_of_origin });
+  const body = JSON.stringify({
+    email,
+    password,
+    first_name,
+    last_name,
+    gender,
+    birth_date,
+    country_of_origin,
+    account_type,
+    club,
+    club_location
+  });
 
   async function createAccount() {
     try {
@@ -60,7 +68,6 @@ export const signUp = (
 
   createAccount();
 };
-
 
 // SIGN IN USER
 export const signIn = (email, password) => dispatch => {

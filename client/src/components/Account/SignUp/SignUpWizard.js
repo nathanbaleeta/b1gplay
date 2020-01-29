@@ -19,7 +19,6 @@ import { connect } from "react-redux";
 import { signUp } from "../../../actions/auth";
 import { clearFields } from "../../../actions/wizard";
 
-
 const styles = theme => ({
   stepper: {
     padding: `${theme.spacing(3)}px 0 ${theme.spacing(5)}px`,
@@ -34,9 +33,9 @@ const styles = theme => ({
     marginLeft: theme.spacing(1),
     backgroundColor: "#C12424",
     color: "#FFFFFF",
-    fontSize: '140%',
-    maxHeight: '45px', 
-    minHeight: '45px'
+    fontSize: "140%",
+    maxHeight: "45px",
+    minHeight: "45px"
   },
   link: {
     textDecoration: "none",
@@ -72,8 +71,6 @@ class SignUpWizard extends Component {
     const password = localStorage.getItem("password");
     const password2 = localStorage.getItem("password2");
 
-    // const account_type = this.props.wizard.accountType;
-
     // const position = this.props.wizard.position;
     // const height = this.props.wizard.height;
     // const weight = this.props.wizard.weight;
@@ -82,50 +79,56 @@ class SignUpWizard extends Component {
     // const time_to_run_40m = this.props.wizard.time40m;
     // const time_to_run_100m = this.props.wizard.time100m;
     // const affiliation = this.props.wizard.affiliation;
-    
+
     // const media_house = this.props.wizard.mediaHouse;
-    // const club = this.props.wizard.club;
-    // const club_location = this.props.wizard.clubLocation;
 
     // Verify password fields match before account creation attempt
     if (password !== password2) {
       console.log("Passwords do not match");
       //this.props.createMessage({ passwordNotMatch: "Passwords do not match" });
     } else {
-        // Extract values from global state
-        const email = this.props.wizard.email;
+      // Extract values from global state
+      const email = this.props.wizard.email;
 
-        const first_name = this.props.wizard.firstname;
-        const last_name = this.props.wizard.lastname;
+      const first_name = this.props.wizard.firstname;
+      const last_name = this.props.wizard.lastname;
 
-        const gender = this.props.wizard.gender;
-        const birth_date = this.props.wizard.dob;
-        const country_of_origin = this.props.wizard.countryOfOrigin;
-        
-        // account_type,
-        // media_house,
-        // position,
-        // height,
-        // weight,
-        // wingspan,
-        // vertical_leap,
-        // time_to_run_40m,
-        // time_to_run_100m,
-        // affiliation,
-        // club,
-        // club_location
-      
+      const gender = this.props.wizard.gender;
+      const birth_date = this.props.wizard.dob;
+      const country_of_origin = this.props.wizard.countryOfOrigin;
+
+      const account_type = this.props.wizard.accountType;
+
+      const club = this.props.wizard.club;
+      const club_location = this.props.wizard.clubLocation;
+
+      // account_type,
+      // media_house,
+      // position,
+      // height,
+      // weight,
+      // wingspan,
+      // vertical_leap,
+      // time_to_run_40m,
+      // time_to_run_100m,
+      // affiliation,
+      // club,
+      // club_location
+
       this.props.signUp(
-          email, 
-          password, 
-          first_name, 
-          last_name, 
-          gender, 
-          birth_date, 
-          country_of_origin
-        );
+        email,
+        password,
+        first_name,
+        last_name,
+        gender,
+        birth_date,
+        country_of_origin,
+        account_type,
+        club,
+        club_location
+      );
 
-     // Clear textfields in sign up form and redux state
+      // Clear textfields in sign up form and redux state
       this.props.clearFields();
     }
   };

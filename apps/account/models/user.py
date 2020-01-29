@@ -21,12 +21,12 @@ class UserManager(BaseUserManager):
                     gender,
                     country_of_origin,
                     birth_date,
-                    # account_type,
+                    account_type,
                     # profile_photo=None,
                     # cover_photo=None,
                     # tag=None,
-                    # club=None,
-                    # club_location=None,
+                    club=None,
+                    club_location=None,
                     # affiliation=None,
                     # media_house=None,
                     # position=None,
@@ -45,12 +45,12 @@ class UserManager(BaseUserManager):
                           gender=gender,
                           country_of_origin=country_of_origin,
                           birth_date=birth_date,
-                          # account_type=account_type,
+                          account_type=account_type,
                           # profile_photo=profile_photo,
                           # cover_photo=cover_photo,
                           # tag=tag,
-                          # club=club,
-                          # club_location=club_location,
+                          club=club,
+                          club_location=club_location,
                           # affiliation=affiliation,
                           # media_house=media_house,
                           # position=position,
@@ -75,12 +75,12 @@ class UserManager(BaseUserManager):
                          gender,
                          country_of_origin,
                          birth_date,
-                         # account_type,
+                         account_type,
                          # profile_photo=None,
                          # cover_photo=None,
                          # tag=None,
-                         # club=None,
-                         # club_location=None,
+                         club=None,
+                         club_location=None,
                          # affiliation=None,
                          # media_house=None,
                          # position=None,
@@ -99,12 +99,12 @@ class UserManager(BaseUserManager):
                           gender=gender,
                           country_of_origin=country_of_origin,
                           birth_date=birth_date,
-                          # account_type=account_type,
+                          account_type=account_type,
                           # profile_photo=profile_photo,
                           # cover_photo=cover_photo,
                           # tag=tag,
-                          # club=club,
-                          # club_location=club_location,
+                          club=club,
+                          club_location=club_location,
                           # affiliation=affiliation,
                           # media_house=media_house,
                           # position=position,
@@ -250,9 +250,9 @@ class User(AbstractUser):
         'gender',
         'country_of_origin',
         'birth_date',
-        # 'account_type',
-        # 'club',
-        # 'club_location',
+        'account_type',
+        'club',
+        'club_location',
         # 'tag',
         # 'profile_photo',
         # 'cover_photo',
@@ -279,11 +279,9 @@ class User(AbstractUser):
     def get_absolute_url(self):
         return reverse('user-detail', args=[str(self.id)])
 
-    #def __str__(self):
-    #    return f'{self.first_name} {self.last_name}'
-
     def __str__(self):
-        return f'{self.email}'
+        return f'{self.first_name} {self.last_name}'
+
 
 
 
