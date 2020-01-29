@@ -32,10 +32,10 @@ class UserManager(BaseUserManager):
                     position=None,
                     height=None,
                     weight=None,
-                    # wingspan=None,
-                    # vertical_leap=None,
-                    # time_to_run_40m=None,
-                    # time_to_run_100m=None
+                    wingspan=None,
+                    vertical_leap=None,
+                    time_to_run_40m=None,
+                    time_to_run_100m=None
                     ):
         user = self.model(
             first_name=first_name,
@@ -56,10 +56,10 @@ class UserManager(BaseUserManager):
             position=position,
             height=height,
             weight=weight,
-            # wingspan=wingspan,
-            # vertical_leap=vertical_leap,
-            # time_to_run_40m=time_to_run_40m,
-            # time_to_run_100m=time_to_run_100m
+            wingspan=wingspan,
+            vertical_leap=vertical_leap,
+            time_to_run_40m=time_to_run_40m,
+            time_to_run_100m=time_to_run_100m
         )
         user.set_password(password)
         user.is_staff = False
@@ -86,10 +86,10 @@ class UserManager(BaseUserManager):
                          position=None,
                          height=None,
                          weight=None,
-                         # wingspan=None,
-                         # vertical_leap=None,
-                         # time_to_run_40m=None,
-                         # time_to_run_100m=None
+                         wingspan=None,
+                         vertical_leap=None,
+                         time_to_run_40m=None,
+                         time_to_run_100m=None
                          ):
         user = self.model(
             first_name=first_name,
@@ -110,10 +110,10 @@ class UserManager(BaseUserManager):
             position=position,
             height=height,
             weight=weight,
-            # wingspan=wingspan,
-            # vertical_leap=vertical_leap,
-            # time_to_run_40m=time_to_run_40m,
-            # time_to_run_100m=time_to_run_100m
+            wingspan=wingspan,
+            vertical_leap=vertical_leap,
+            time_to_run_40m=time_to_run_40m,
+            time_to_run_100m=time_to_run_100m
         )
         user.set_password(password)
         user.is_active = True
@@ -261,10 +261,10 @@ class User(AbstractUser):
         'position',
         'height',
         'weight',
-        # 'wingspan',
-        # 'vertical_leap',
-        # 'time_to_run_40m',
-        # 'time_to_run_100m'
+        'wingspan',
+        'vertical_leap',
+        'time_to_run_40m',
+        'time_to_run_100m'
     ]
 
     USERNAME_FIELD = 'email'

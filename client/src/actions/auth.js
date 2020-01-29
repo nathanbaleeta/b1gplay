@@ -27,7 +27,11 @@ export const signUp = (
   club_location,
   position,
   height,
-  weight
+  weight,
+  wingspan,
+  vertical_leap,
+  time_to_run_40m,
+  time_to_run_100m
 ) => dispatch => {
   // Headers
   const config = {
@@ -55,7 +59,11 @@ export const signUp = (
     club_location,
     position,
     height,
-    weight
+    weight,
+    wingspan,
+    vertical_leap,
+    time_to_run_40m,
+    time_to_run_100m
   });
 
   async function createAccount() {

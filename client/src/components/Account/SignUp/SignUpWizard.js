@@ -71,11 +71,6 @@ class SignUpWizard extends Component {
     const password = localStorage.getItem("password");
     const password2 = localStorage.getItem("password2");
 
-    // const wingspan = this.props.wizard.wingspan;
-    // const vertical_leap = this.props.wizard.verticalLeap;
-    // const time_to_run_40m = this.props.wizard.time40m;
-    // const time_to_run_100m = this.props.wizard.time100m;
-
     // Verify password fields match before account creation attempt
     if (password !== password2) {
       console.log("Passwords do not match");
@@ -103,18 +98,10 @@ class SignUpWizard extends Component {
       const height = this.props.wizard.height;
       const weight = this.props.wizard.weight;
 
-      // account_type,
-      // media_house,
-      // position,
-      // height,
-      // weight,
-      // wingspan,
-      // vertical_leap,
-      // time_to_run_40m,
-      // time_to_run_100m,
-      // affiliation,
-      // club,
-      // club_location
+      const wingspan = this.props.wizard.wingspan;
+      const vertical_leap = this.props.wizard.verticalLeap;
+      const time_to_run_40m = this.props.wizard.time40m;
+      const time_to_run_100m = this.props.wizard.time100m;
 
       this.props.signUp(
         email,
@@ -131,7 +118,11 @@ class SignUpWizard extends Component {
         club_location,
         position,
         height,
-        weight
+        weight,
+        wingspan,
+        vertical_leap,
+        time_to_run_40m,
+        time_to_run_100m
       );
 
       // Clear textfields in sign up form and redux state
