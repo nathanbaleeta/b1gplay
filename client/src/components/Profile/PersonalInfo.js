@@ -38,8 +38,8 @@ const styles = theme => ({
   },
   title: {
     textAlign: "left",
-    color: "#C12424",
-    fontWeight: "bold"
+    color: "#C12424"
+    //fontWeight: "bold"
   }
 });
 

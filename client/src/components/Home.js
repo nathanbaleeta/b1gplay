@@ -6,6 +6,7 @@ import Container from "@material-ui/core/Container";
 
 import Header from "../components/Layout/Header";
 import PersonalInfo from "../components/Profile/PersonalInfo";
+import MyProfile from "../components/Profile/MyProfile";
 
 const styles = theme => ({
   root: {
@@ -13,10 +14,10 @@ const styles = theme => ({
   },
   main: {
     marginLeft: "5%",
-    marginRight: "4%",
+    marginRight: "3%",
     width: "auto",
-    paddingTop: "8%",
-    paddingBottom: "7%",
+    //paddingTop: "8%",
+    //paddingBottom: "7%",
     [theme.breakpoints.down("sm")]: {
       marginLeft: 0,
       marginRight: 0
@@ -30,9 +31,11 @@ const styles = theme => ({
     //display: "block" // Fix IE 11 issue.
   },
   personalInfo: {
-    marginTop: "1%"
-
-    //display: "block" // Fix IE 11 issue.
+    //marginTop: "1%"
+  },
+  myProfile: {
+    marginTop: "13%",
+    marginBottom: "4%"
   }
 });
 
@@ -45,8 +48,7 @@ class Home extends Component {
       <Fragment>
         <div className={classes.root}>
           <Header />
-
-          <Grid container className={classes.main} spacing={3}>
+          <Grid container className={classes.main} spacing={2}>
             <Grid container item lg={8} md={7} sm={12} xs={12} spacing={2}>
               <Grid item lg={12} xs={12}>
                 <PersonalInfo />
@@ -58,19 +60,34 @@ class Home extends Component {
                 <PersonalInfo />
               </Grid>
             </Grid>
-            <Grid container item lg={4} md={5} sm={12} xs={12} spacing={1}>
-              <PersonalInfo />
+            <Grid
+              //container
+              item
+              lg={4}
+              md={5}
+              sm={12}
+              xs={12}
+              spacing={2}
+            >
+              <Grid item lg={12} xs={12} className={classes.myProfile}>
+                <MyProfile />
+              </Grid>
+              <Grid item lg={12} xs={12}>
+                <PersonalInfo />
+              </Grid>
             </Grid>
           </Grid>
-
           <Grid container className={classes.main} spacing={3}>
             <Grid container item lg={3} xs={12} spacing={1}>
               <PersonalInfo />
             </Grid>
-            <Grid container item lg={5} xs={12} spacing={1}>
+            <Grid container item lg={3} xs={12} spacing={1}>
               <PersonalInfo />
             </Grid>
-            <Grid container item lg={4} xs={12} spacing={1}>
+            <Grid container item lg={3} xs={12} spacing={1}>
+              <PersonalInfo />
+            </Grid>
+            <Grid container item lg={3} xs={12} spacing={1}>
               <PersonalInfo />
             </Grid>
           </Grid>
