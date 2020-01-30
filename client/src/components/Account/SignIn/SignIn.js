@@ -49,9 +49,9 @@ const styles = theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
     background: "#C12424",
-    fontSize: '150%',
-    maxHeight: '50px', 
-    minHeight: '50px'
+    fontSize: "150%",
+    maxHeight: "50px",
+    minHeight: "50px"
   },
   // Overiding css properties on material ui textbox
   notchedOutline: {
@@ -61,8 +61,8 @@ const styles = theme => ({
   // Overiding css properties on material ui textbox rounded borders
   textField: {
     [`& fieldset`]: {
-      borderRadius: 0,
-    },
+      borderRadius: 0
+    }
   }
 });
 
@@ -128,7 +128,7 @@ class SignIn extends Component {
                 className={classes.textField}
                 autoFocus
                 onChange={this.onChange}
-                 InputProps={{
+                InputProps={{
                   classes: {
                     notchedOutline: classes.notchedOutline
                   }
@@ -147,7 +147,7 @@ class SignIn extends Component {
                 className={classes.textField}
                 autoComplete="current-password"
                 onChange={this.onChange}
-                 InputProps={{
+                InputProps={{
                   classes: {
                     notchedOutline: classes.notchedOutline
                   }
@@ -196,7 +196,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  { signIn }
-)(withStyles(styles)(SignIn));
+export default connect(mapStateToProps, { signIn })(withStyles(styles)(SignIn));

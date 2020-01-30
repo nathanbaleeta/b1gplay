@@ -43,8 +43,8 @@ const styles = theme => ({
   // Overiding css properties on material ui textbox rounded borders
   textField: {
     [`& fieldset`]: {
-      borderRadius: 0,
-    },
+      borderRadius: 0
+    }
   }
 });
 
@@ -95,7 +95,7 @@ class SportsForm extends React.Component {
   };
 
   onChangeClubLocation = (event, value) => {
-    this.props.updateField('clubLocation', value);
+    this.props.updateField("clubLocation", value);
   };
 
   render() {
@@ -112,7 +112,9 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="affiliation"
-            value={this.props.wizard.affiliation ? this.props.wizard.affiliation : ""}
+            value={
+              this.props.wizard.affiliation ? this.props.wizard.affiliation : ""
+            }
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -135,7 +137,9 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="mediaHouse"
-            value={this.props.wizard.mediaHouse ? this.props.wizard.mediaHouse : ""}
+            value={
+              this.props.wizard.mediaHouse ? this.props.wizard.mediaHouse : ""
+            }
             onChange={this.onChange}
             /*  InputLabelProps={{
               shrink: true
@@ -183,7 +187,6 @@ class SportsForm extends React.Component {
         </Grid>
         <Grid item xs={4} sm={4}>
           <TextField
-            required
             id="outlined-uncontrolled"
             label="Height"
             type="number"
@@ -250,7 +253,11 @@ class SportsForm extends React.Component {
             variant="outlined"
             fullWidth
             name="verticalLeap"
-            value={this.props.wizard.verticalLeap ? this.props.wizard.verticalLeap : ""}
+            value={
+              this.props.wizard.verticalLeap
+                ? this.props.wizard.verticalLeap
+                : ""
+            }
             onChange={this.onChange}
             InputProps={{
               classes: {
@@ -318,27 +325,30 @@ class SportsForm extends React.Component {
 
         <Grid item xs={12} sm={12}>
           <Autocomplete
-              id="clubLocation"
-              options={countries}
-              getOptionLabel={option => option.Name}
-              onInputChange={this.onChangeClubLocation}
-              renderInput={params => (
-                <TextField
-                  {...params}
-                  value={this.props.wizard.clubLocation ? this.props.wizard.clubLocation : ""}
-                  className={classes.textField}
-                  label="Club Location"
-                  variant="outlined"
-                  margin="normal"
-                  fullWidth
-                  helperText="Please select club location"
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                />
-              )}
-            />
-              
+            id="clubLocation"
+            options={countries}
+            getOptionLabel={option => option.Name}
+            onInputChange={this.onChangeClubLocation}
+            renderInput={params => (
+              <TextField
+                {...params}
+                value={
+                  this.props.wizard.clubLocation
+                    ? this.props.wizard.clubLocation
+                    : ""
+                }
+                className={classes.textField}
+                label="Club Location"
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                helperText="Please select club location"
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />
+            )}
+          />
         </Grid>
       </Grid>
     );
@@ -351,7 +361,9 @@ class SportsForm extends React.Component {
             id="accountType"
             select
             name="accountType"
-            value={this.props.wizard.accountType ? this.props.wizard.accountType : ""}
+            value={
+              this.props.wizard.accountType ? this.props.wizard.accountType : ""
+            }
             onChange={this.onChange}
             label="Account type"
             margin="normal"

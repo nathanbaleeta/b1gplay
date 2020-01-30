@@ -165,7 +165,9 @@ class User(AbstractUser):
         (SMALL_FORWARD, 'Small forward'),
     )
 
-    # Generate userID as a uuid field
+    '''Generate user ID as a uuid string for 
+    uniqueness & better security to avoid brute force
+    '''
     id = models.CharField(
         primary_key=True,
         default=str(uuid.uuid4()),

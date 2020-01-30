@@ -24,16 +24,13 @@ import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import { Redirect } from "react-router-dom";
 
-
-
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-
+import Drawer from "@material-ui/core/Drawer";
+import List from "@material-ui/core/List";
+import Divider from "@material-ui/core/Divider";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
 
 import { connect } from "react-redux";
 import { logout } from "../../actions/auth";
@@ -41,8 +38,8 @@ import { logout } from "../../actions/auth";
 const styles = theme => ({
   root: {
     width: "100%",
-    zoom: "70%",
-    maxZoom: "75%"
+    zoom: "60%"
+    //maxZoom: "75%"
   },
   appBar: {
     background: "#C12424"
@@ -147,12 +144,12 @@ const styles = theme => ({
     }
   },
   // Drawer CSS
-   list: {
-    width: 400,
+  list: {
+    width: 400
   },
   fullList: {
-    width: 'auto',
-  },
+    width: "auto"
+  }
 });
 
 class Header extends Component {
@@ -183,22 +180,22 @@ class Header extends Component {
   };
 
   openDrawer = () => {
-      this.setState({ rightDrawer: true });
-    };
+    this.setState({ rightDrawer: true });
+  };
 
   closeDrawer = () => {
-      this.setState({ rightDrawer: false });
-    };
+    this.setState({ rightDrawer: false });
+  };
 
   render() {
     const { anchorEl, mobileMoreAnchorEl } = this.state;
     const { classes } = this.props;
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-   
-    if (!this.props.isAuthenticated) {
+
+    /* if (!this.props.isAuthenticated) {
       return <Redirect to="/auth/login" />;
-    }
+    } */
 
     const renderMenu = (
       <Menu
@@ -259,38 +256,45 @@ class Header extends Component {
     );
 
     const sideList = side => (
-    <div
-      className={classes.list}
-      role="presentation"
-      onClick={this.state.rightDrawer}
-      onKeyDown={this.state.rightDrawer}
-    >
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </div>
-  );
-
+      <div
+        className={classes.list}
+        role="presentation"
+        onClick={this.state.rightDrawer}
+        onKeyDown={this.state.rightDrawer}
+      >
+        <List>
+          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {["All mail", "Trash", "Spam"].map((text, index) => (
+            <ListItem button key={text}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
+      </div>
+    );
 
     return (
       <Fragment>
-      <Drawer anchor="right" open={this.state.rightDrawer} onClose={this.closeDrawer}>
-   {sideList('right')}
-</Drawer>
+        <Drawer
+          anchor="right"
+          open={this.state.rightDrawer}
+          onClose={this.closeDrawer}
+        >
+          {sideList("right")}
+        </Drawer>
         <div className={classes.root}>
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar>
@@ -390,7 +394,6 @@ class Header extends Component {
                           />
                         </IconButton>
 
-
                         {/*       <Typography
                           variant="body2"
                           color="inherit"
@@ -441,7 +444,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(
-  mapStateToProps,
-  { logout }
-)(withStyles(styles)(Header));
+export default connect(mapStateToProps, { logout })(withStyles(styles)(Header));
