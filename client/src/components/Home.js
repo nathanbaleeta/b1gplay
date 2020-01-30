@@ -8,6 +8,7 @@ import Header from "../components/Layout/Header";
 import PersonalInfo from "../components/Profile/PersonalInfo";
 import MyProfile from "../components/Profile/MyProfile";
 import PersonalRatings from "../components/Profile/PersonalRatings";
+import CoverProfile from "../components/Profile/CoverProfile";
 
 const styles = theme => ({
   root: {
@@ -52,7 +53,7 @@ class Home extends Component {
           <Grid container className={classes.main} spacing={2}>
             <Grid container item lg={8} md={7} sm={12} xs={12} spacing={2}>
               <Grid item lg={12} xs={12}>
-                <PersonalInfo />
+                <CoverProfile />
               </Grid>
               <Grid item lg={5} xs={12}>
                 <PersonalInfo />
