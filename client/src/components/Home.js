@@ -78,20 +78,6 @@ class Home extends Component {
               </Grid>
             </Grid>
           </Grid>
-          <Grid container className={classes.main} spacing={3}>
-            <Grid container item lg={3} xs={12} spacing={1}>
-              <PersonalInfo />
-            </Grid>
-            <Grid container item lg={3} xs={12} spacing={1}>
-              <PersonalInfo />
-            </Grid>
-            <Grid container item lg={3} xs={12} spacing={1}>
-              <PersonalInfo />
-            </Grid>
-            <Grid container item lg={3} xs={12} spacing={1}>
-              <PersonalInfo />
-            </Grid>
-          </Grid>
         </div>
       </Fragment>
     );

@@ -81,158 +81,228 @@ class PersonalInfo extends Component {
           />
 
           <CardContent>
-            <Grid container spacing={24}>
-              <Grid item xs={5} sm={5}>
-                <Typography variant="body1" gutterBottom align="left">
-                  Date of birth:
-                </Typography>
-                <Typography variant="body1" gutterBottom align="left">
-                  Country of Origin:
-                </Typography>
+            <table
+              style={{
+                width: "100%"
+              }}
+            >
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left">
+                    Date of birth:
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                  >
+                    17th September 2019
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Country of Origin:
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    Democratic Republic of Congo
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Position
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    Central forward
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Weight
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    120kg
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Height
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    190cm
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Wingspan
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    120cm
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Vertical leap
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    180cm
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Time to run 40m
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    7 sec
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Time to run 100m
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    14 sec
+                  </Typography>
+                </td>
+              </tr>
 
-                <Typography variant="body1" gutterBottom align="left">
-                  Position:
-                </Typography>
-                <Typography variant="body1" gutterBottom align="left">
-                  Weight:
-                </Typography>
-                <Typography variant="body1" gutterBottom align="left">
-                  Height:
-                </Typography>
-
-                <Typography variant="body1" gutterBottom align="left">
-                  Wingspan:
-                </Typography>
-                <Typography variant="body1" gutterBottom align="left">
-                  Vertical leap:
-                </Typography>
-                <Typography variant="body1" gutterBottom align="left">
-                  Time to run 40m:
-                </Typography>
-                <Typography variant="body1" gutterBottom align="left">
-                  Time to run 100m:
-                </Typography>
-              </Grid>
-              <Grid item xs={7} sm={7}>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                  noWrap
-                >
-                  17th September 2019
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                  noWrap
-                >
-                  Democratic Republic of Congo
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                >
-                  Center forward
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                >
-                  80kg
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                >
-                  asasa
-                </Typography>
-
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                >
-                  asas
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                >
-                  hjh
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                >
-                  hkkk
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                >
-                  gjgj
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <Typography
-                  variant="caption"
-                  gutterBottom
-                  align="left"
-                  style={{
-                    color: "#C12424",
-                    //fontWeight: "bold",
-                    fontSize: "20px",
-                    paddingTop: "3%",
-                    paddingBottom: "3%"
-                  }}
-                >
-                  Affiliation
-                </Typography>
-              </Grid>
-              <Grid item xs={5} sm={5}>
-                <Typography variant="body1" gutterBottom align="left">
-                  Team:
-                </Typography>
-                <Typography variant="body1" gutterBottom align="left">
-                  Location:
-                </Typography>
-              </Grid>
-              <Grid item xs={7} sm={7}>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                >
-                  jhjhj
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="primary"
-                  gutterBottom
-                  align="left"
-                >
-                  hjl
-                </Typography>
-              </Grid>
-            </Grid>
+              <tr>
+                <td>
+                  <Typography
+                    variant="caption"
+                    gutterBottom
+                    align="left"
+                    style={{
+                      color: "#C12424",
+                      //fontWeight: "bold",
+                      fontSize: "20px",
+                      paddingTop: "3%",
+                      paddingBottom: "3%"
+                    }}
+                  >
+                    Affiliation
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Club
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    The Canons
+                  </Typography>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Typography variant="body1" gutterBottom align="left" wrap>
+                    Club location
+                  </Typography>
+                </td>
+                <td>
+                  <Typography
+                    variant="body1"
+                    color="primary"
+                    gutterBottom
+                    align="left"
+                    wrap
+                  >
+                    Tanzania
+                  </Typography>
+                </td>
+              </tr>
+            </table>
           </CardContent>
         </Card>
       </div>
