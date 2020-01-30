@@ -66,7 +66,7 @@ class MyProfile extends Component {
 
           <div>
             <Grid container spacing={24}>
-              <Grid item lg={4} xs={12} sm={12}>
+              <Grid item lg={4} sm={4}>
                 <Link to="/personal-ratings" className={classes.link}>
                   <Typography
                     variant="body2"

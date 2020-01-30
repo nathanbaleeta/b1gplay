@@ -192,14 +192,15 @@ class PersonalInfo extends Component {
               </Grid>
               <Grid item xs={12} sm={12}>
                 <Typography
-                  variant="h5"
+                  variant="caption"
                   gutterBottom
                   align="left"
                   style={{
                     color: "#C12424",
-                    fontWeight: "bold",
-                    fontSize: "24px",
-                    paddingTop: "2%"
+                    //fontWeight: "bold",
+                    fontSize: "20px",
+                    paddingTop: "3%",
+                    paddingBottom: "3%"
                   }}
                 >
                   Affiliation

@@ -7,6 +7,7 @@ import Container from "@material-ui/core/Container";
 import Header from "../components/Layout/Header";
 import PersonalInfo from "../components/Profile/PersonalInfo";
 import MyProfile from "../components/Profile/MyProfile";
+import PersonalRatings from "../components/Profile/PersonalRatings";
 
 const styles = theme => ({
   root: {
@@ -73,7 +74,7 @@ class Home extends Component {
                 <MyProfile />
               </Grid>
               <Grid item lg={12} xs={12}>
-                <PersonalInfo />
+                <PersonalRatings />
               </Grid>
             </Grid>
           </Grid>
