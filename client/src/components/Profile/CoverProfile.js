@@ -13,6 +13,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
+import IconButton from "@material-ui/core/IconButton";
 
 //import Post from "./Post";
 import { Link } from "react-router-dom";
@@ -21,7 +22,9 @@ import { connect } from "react-redux";
 
 const styles = theme => ({
   root: {
-    marginBottom: "1%"
+    marginBottom: "1%",
+    paddingTop: "12%",
+    color: "white"
   },
   tabs: {
     marginLeft: "0%",
@@ -31,12 +34,7 @@ const styles = theme => ({
     borderBottomRightRadius: "4px",
     backgroundColor: "white"
   },
-  bigAvatar: {
-    margin: 10,
-    width: 120,
-    height: 120,
-    border: "3px solid black"
-  },
+
   paperContainer: {
     width: "100%",
     height: 330,
@@ -58,15 +56,10 @@ const styles = theme => ({
     height: 160,
     border: "5px solid white",
     marginTop: "-14%",
-    marginLeft: "3%"
-
-    /* "&:hover": {
-      position: "relative",
-      paddingBottom: "4%",
-      backgroundColor: "#000000",
-      opacity: 0.3
-    } */
+    marginLeft: "3%",
+    display: "block"
   },
+
   card: {
     //maxWidth: 345
     marginTop: "-7%",
@@ -80,12 +73,14 @@ const styles = theme => ({
   media: {
     height: 280
   },
+
   overlayAvatar: {
     position: "absolute",
-    top: "58%",
+    top: "59%",
     left: "4%",
-    color: "white"
+    display: "block"
   },
+
   overlayChangeCover: {
     position: "absolute",
     top: "78%",
@@ -98,6 +93,7 @@ const styles = theme => ({
     paddingLeft: "3px"
   },
   iconCoverPhotoButton: {
+    paddingLeft: "8px",
     paddingRight: "8px"
   }
 });
@@ -113,11 +109,6 @@ class CoverProfile extends Component {
     return (
       <Fragment>
         <div className={classes.root}>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
           <Card className={classes.card} elevation={0}>
             <CardActionArea>
               <CardMedia
@@ -125,13 +116,26 @@ class CoverProfile extends Component {
                 image="/static/images/profile/cover.jpg"
                 title="Cover photo"
               />
+
               <div className={classes.overlayAvatar}>
-                <Avatar
-                  onClick={this.handleOpen}
-                  alt="Profile photo"
-                  src="/static/images/profile/avatar.png"
-                  className={classes.bigProfileAvatar}
-                />
+                <Fragment>
+                  <input
+                    color="primary"
+                    accept="image/*"
+                    type="file"
+                    //onChange={onChangeCoverPhoto}
+                    id="icon-button-file"
+                    style={{ display: "none" }}
+                  />
+                  <label htmlFor="icon-button-file">
+                    <Avatar
+                      onClick={this.handleOpen}
+                      alt="Profile photo"
+                      src="/static/images/profile/avatar.png"
+                      className={classes.bigProfileAvatar}
+                    />
+                  </label>
+                </Fragment>
               </div>
 
               <div className={classes.overlayChangeCover}>
@@ -152,7 +156,7 @@ class CoverProfile extends Component {
                       size="medium"
                       color="primary"
                     >
-                      <AddAPhotoIcon className={classes.iconCoverPhotoButton} />{" "}
+                      <AddAPhotoIcon className={classes.iconCoverPhotoButton} />
                       Change cover photo
                     </Button>
                   </label>

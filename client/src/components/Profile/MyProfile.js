@@ -65,94 +65,99 @@ class MyProfile extends Component {
           </Typography>
 
           <div>
-            <Grid container spacing={24}>
-              <Grid item lg={4} sm={4}>
-                <Link to="/personal-ratings" className={classes.link}>
-                  <Typography
-                    variant="body2"
-                    gutterBottom
-                    align="center"
-                    style={{
-                      color: "#C12424",
-                      textTransform: "uppercase"
-                      //fontWeight: "bold"
-                    }}
-                  >
-                    Ratings
-                  </Typography>
+            <table
+              style={{
+                width: "100%"
+              }}
+            >
+              <tr>
+                <td>
+                  <Link to="/personal-ratings" className={classes.link}>
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      align="center"
+                      style={{
+                        color: "#C12424",
+                        textTransform: "uppercase"
+                        //fontWeight: "bold"
+                      }}
+                    >
+                      Ratings
+                    </Typography>
 
-                  <Typography
-                    variant="body2"
-                    gutterBottom
-                    align="center"
-                    //color="Primary"
-                    style={{
-                      color: "black"
-                      //fontWeight: "bold"
-                    }}
-                  >
-                    10
-                  </Typography>
-                </Link>
-              </Grid>
-
-              <Grid item xs={4} sm={4}>
-                <Link to="/following" className={classes.link}>
-                  <Typography
-                    variant="body2"
-                    gutterBottom
-                    align="center"
-                    style={{
-                      color: "#C12424",
-                      textTransform: "uppercase"
-                      //fontWeight: "bold"
-                    }}
-                  >
-                    Following
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    gutterBottom
-                    align="center"
-                    //color="Primary"
-                    style={{
-                      color: "black"
-                      //fontWeight: "bold"
-                    }}
-                  >
-                    7
-                  </Typography>
-                </Link>
-              </Grid>
-              <Grid item xs={4} sm={4}>
-                <Link to="/followers" className={classes.link}>
-                  <Typography
-                    variant="body2"
-                    gutterBottom
-                    align="center"
-                    style={{
-                      color: "#C12424",
-                      textTransform: "uppercase"
-                      //fontWeight: "bold"
-                    }}
-                  >
-                    Followers
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    gutterBottom
-                    align="center"
-                    //color="Primary"
-                    style={{
-                      color: "black"
-                      //fontWeight: "bold"
-                    }}
-                  >
-                    9
-                  </Typography>
-                </Link>
-              </Grid>
-            </Grid>
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      align="center"
+                      //color="Primary"
+                      style={{
+                        color: "black"
+                        //fontWeight: "bold"
+                      }}
+                    >
+                      10
+                    </Typography>
+                  </Link>
+                </td>
+                <td>
+                  <Link to="/following" className={classes.link}>
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      align="center"
+                      style={{
+                        color: "#C12424",
+                        textTransform: "uppercase"
+                        //fontWeight: "bold"
+                      }}
+                    >
+                      Following
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      align="center"
+                      //color="Primary"
+                      style={{
+                        color: "black"
+                        //fontWeight: "bold"
+                      }}
+                    >
+                      7
+                    </Typography>
+                  </Link>
+                </td>
+                <td>
+                  <Link to="/followers" className={classes.link}>
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      align="center"
+                      style={{
+                        color: "#C12424",
+                        textTransform: "uppercase"
+                        //fontWeight: "bold"
+                      }}
+                    >
+                      Followers
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      gutterBottom
+                      align="center"
+                      //color="Primary"
+                      style={{
+                        color: "black"
+                        //fontWeight: "bold"
+                      }}
+                    >
+                      9
+                    </Typography>
+                  </Link>
+                </td>
+              </tr>
+            </table>
           </div>
         </Paper>
       </Fragment>
