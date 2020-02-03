@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import Container from "@material-ui/core/Container";
 
 import Header from "../components/Layout/Header";
 import PersonalInfo from "../components/Profile/PersonalInfo";

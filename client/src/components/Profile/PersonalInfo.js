@@ -3,16 +3,12 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
 
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 
 import IconButton from "@material-ui/core/IconButton";
-import MenuItem from "@material-ui/core/MenuItem";
-
-import { Switch, Route } from "react-router-dom";
 
 const styles = theme => ({
   "@global": {
@@ -29,12 +25,25 @@ const styles = theme => ({
   },
   root: {
     flexGrow: 1,
-    zoom: "80%"
+    zoom: "80%",
+    // Add breakpoint for small devices
+    [theme.breakpoints.down("sm")]: {
+      //marginTop: "-12%",
+      marginLeft: "-4%",
+      marginRight: "-7%",
+      width: "auto"
+    }
   },
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
+    [theme.breakpoints.down("sm")]: {
+      //marginTop: "-12%",
+      marginLeft: "-4%",
+      marginRight: "-7%",
+      width: "auto"
+    }
   },
   title: {
     textAlign: "left",

@@ -13,12 +13,8 @@ import CardContent from "@material-ui/core/CardContent";
 
 import IconButton from "@material-ui/core/IconButton";
 import SportsBasketballIcon from "@material-ui/icons/SportsBasketball";
-import MenuItem from "@material-ui/core/MenuItem";
-
-import { Switch, Route } from "react-router-dom";
 
 import Rating from "@material-ui/lab/Rating";
-import Box from "@material-ui/core/Box";
 
 const styles = theme => ({
   "@global": {

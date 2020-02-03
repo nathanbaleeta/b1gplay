@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 
 import Tab from "@material-ui/core/Tab";
@@ -9,11 +8,11 @@ import Tabs from "@material-ui/core/Tabs";
 
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
+
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+
+import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
 
 //import Post from "./Post";
 import { Link } from "react-router-dom";
@@ -55,8 +54,8 @@ const styles = theme => ({
     border: "5px solid white"
   }, */
   bigProfileAvatar: {
-    width: 170,
-    height: 170,
+    width: 160,
+    height: 160,
     border: "5px solid white",
     marginTop: "-14%",
     marginLeft: "3%"
@@ -70,16 +69,36 @@ const styles = theme => ({
   },
   card: {
     //maxWidth: 345
-    marginTop: "-7%"
+    marginTop: "-7%",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "-12%",
+      marginLeft: "-4%",
+      marginRight: "-9%",
+      width: "auto"
+    }
   },
   media: {
-    height: 300
+    height: 280
   },
-  overlay: {
+  overlayAvatar: {
     position: "absolute",
-    top: "60%",
+    top: "58%",
     left: "4%",
     color: "white"
+  },
+  overlayChangeCover: {
+    position: "absolute",
+    top: "78%",
+    right: "4%"
+    //color: "white"
+  },
+  coverPhotoButton: {
+    backgroundColor: "#000000",
+    textTransform: "capitalize",
+    paddingLeft: "3px"
+  },
+  iconCoverPhotoButton: {
+    paddingRight: "8px"
   }
 });
 
@@ -103,16 +122,41 @@ class CoverProfile extends Component {
             <CardActionArea>
               <CardMedia
                 className={classes.media}
-                image="/static/images/profile/contemplative-reptile.jpg"
-                title="Contemplative Reptile"
+                image="/static/images/profile/cover.jpg"
+                title="Cover photo"
               />
-              <div className={classes.overlay}>
+              <div className={classes.overlayAvatar}>
                 <Avatar
                   onClick={this.handleOpen}
-                  alt="Remy Sharp"
+                  alt="Profile photo"
                   src="/static/images/profile/avatar.png"
                   className={classes.bigProfileAvatar}
                 />
+              </div>
+
+              <div className={classes.overlayChangeCover}>
+                <Fragment>
+                  <input
+                    color="primary"
+                    accept="image/*"
+                    type="file"
+                    //onChange={onChangeCoverPhoto}
+                    id="icon-button-file"
+                    style={{ display: "none" }}
+                  />
+                  <label htmlFor="icon-button-file">
+                    <Button
+                      variant="contained"
+                      component="span"
+                      className={classes.coverPhotoButton}
+                      size="medium"
+                      color="primary"
+                    >
+                      <AddAPhotoIcon className={classes.iconCoverPhotoButton} />{" "}
+                      Change cover photo
+                    </Button>
+                  </label>
+                </Fragment>
               </div>
             </CardActionArea>
             <Tabs
