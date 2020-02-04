@@ -13,7 +13,6 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 
 import AddAPhotoIcon from "@material-ui/icons/AddAPhoto";
-import IconButton from "@material-ui/core/IconButton";
 
 //import Post from "./Post";
 import { Link } from "react-router-dom";
@@ -23,7 +22,7 @@ import { connect } from "react-redux";
 const styles = theme => ({
   root: {
     marginBottom: "1%",
-    paddingTop: "12%",
+    paddingTop: "10%",
     color: "white"
   },
   tabs: {
@@ -78,20 +77,23 @@ const styles = theme => ({
     position: "absolute",
     top: "59%",
     left: "4%",
-    display: "block"
+    display: "block",
+    backgroundColor: "transparent"
   },
 
   overlayChangeCover: {
     position: "absolute",
-    top: "78%",
+    top: "80%",
     right: "4%"
     //color: "white"
   },
+
   coverPhotoButton: {
     backgroundColor: "#000000",
     textTransform: "capitalize",
     paddingLeft: "3px"
   },
+
   iconCoverPhotoButton: {
     paddingLeft: "8px",
     paddingRight: "8px"
