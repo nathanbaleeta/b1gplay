@@ -7,12 +7,13 @@ import SignIn from "./components/Account/SignIn/";
 import SignUp from "./components/Account/SignUp/";
 import Home from "./components/Home";
 import Followers from "./components/Followers/Followers";
+import Following from "./components/Following/Following";
 
 //import AuthenticatedRoute from "./components/common/AuthenticatedRoute";
 
 const App = () => (
   <Switch>
-    <Route path="/following" />
+    <Route path="/following" component={Following} />
     <Route path="/followers" component={Followers} />
     <Route path="/" component={Home} />
 
