@@ -9,12 +9,15 @@ import Home from "./components/Home";
 import Followers from "./components/Followers/Followers";
 import Following from "./components/Following/Following";
 
+import PersonalRatings from "./components/PersonalRatings/PersonalRatings";
+
 //import AuthenticatedRoute from "./components/common/AuthenticatedRoute";
 
 const App = () => (
   <Switch>
     <Route path="/following" component={Following} />
     <Route path="/followers" component={Followers} />
+    <Route path="/personal-ratings" component={PersonalRatings} />
     <Route path="/" component={Home} />
 
     <Route path="/auth/login" render={props => <SignIn {...props} />} />
