@@ -8,9 +8,8 @@ import StarIcon from "@material-ui/icons/Star";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-//import NewStars1 from "../NewStars/NewStars1";
+import IndividualRatings from "../IndividualRatings/IndividualRatings";
 import PersonalRatingGraphs from "../PersonalRatings/PersonalRatingGraphs";
-//import Filter from "../NewRatings/Filter";
 
 import Header from "../Layout/Header";
 
@@ -26,7 +25,7 @@ TabContainer.propTypes = {
   children: PropTypes.node.isRequired
 };
 
-const styles = {
+const styles = theme => ({
   //Style the scrollbar
   "@global": {
     "*::-webkit-scrollbar": {
@@ -46,9 +45,15 @@ const styles = {
     marginTop: "5%",
     marginLeft: "5%",
     marginRight: "3%",
-    width: "auto"
+    width: "auto",
+    [theme.breakpoints.down("sm")]: {
+      marginLeft: "0%",
+      marginRight: "-5%",
+      width: "auto",
+      paddingTop: "10%"
+    }
   }
-};
+});
 
 class PersonalRatings extends Component {
   state = {
@@ -86,30 +91,9 @@ class PersonalRatings extends Component {
           )}
           {value === 1 && (
             <TabContainer>
-              <Grid container spacing={24}>
-                <Grid
-                  item
-                  lg={3}
-                  xs={12}
-                  style={{
-                    //position: "fixed",
-                    margin: 0
-                  }}
-                >
-                  {/*  <Filter /> */}
-                </Grid>
-                <Grid
-                  item
-                  lg={9}
-                  sm={12}
-                  xs={12}
-                  style={
-                    {
-                      //marginLeft: "16%"
-                    }
-                  }
-                >
-                  {/* <NewStars1 /> */}
+              <Grid container spacing={2}>
+                <Grid item lg={12} sm={12} xs={12}>
+                  <IndividualRatings />
                 </Grid>
               </Grid>
             </TabContainer>
