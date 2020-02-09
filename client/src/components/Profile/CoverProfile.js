@@ -23,7 +23,8 @@ const styles = theme => ({
   root: {
     marginBottom: "1%",
     paddingTop: "10%",
-    color: "white"
+    color: "white",
+    zoom: "80%"
   },
   tabs: {
     marginLeft: "0%",

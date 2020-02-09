@@ -53,268 +53,319 @@ const styles = theme => ({
 });
 
 class PersonalInfo extends Component {
+  state = { editing: false };
+
+  handleOpen = () => {
+    this.setState({ editing: !this.state.editing });
+  };
+
   render() {
     const { classes } = this.props;
-    return (
-      <div className={classes.root}>
-        <Card
-          className={classes.card}
-          elevation={0}
-          style={{
-            border: "1px solid #d4d4d4",
-            borderRadius: "4px"
-          }}
-        >
-          <CardHeader
-            classes={{
-              title: classes.title
-            }}
-            action={
-              <IconButton
-                onClick={this.handleOpen}
-                style={{
-                  background: "white"
-                }}
-              >
-                <img
-                  src="/static/images/profile/edit_profile1.png"
-                  alt="edit profile icon"
-                  style={{
-                    width: "30px",
-                    height: "30px"
-                  }}
-                />
-              </IconButton>
-            }
-            title="Personal Info"
-          />
 
-          <CardContent>
-            <table
+    const { editing } = this.state;
+
+    const profile = (
+      <Card
+        className={classes.card}
+        elevation={0}
+        style={{
+          border: "1px solid #d4d4d4",
+          borderRadius: "4px"
+        }}
+      >
+        <CardHeader
+          classes={{
+            title: classes.title
+          }}
+          action={
+            <IconButton
+              onClick={this.handleOpen}
               style={{
-                width: "100%"
+                background: "white"
               }}
             >
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left">
-                    Date of birth:
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                  >
-                    17th September 2019
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Country of Origin:
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    Democratic Republic of Congo
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Position
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    Central forward
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Weight
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    120kg
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Height
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    190cm
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Wingspan
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    120cm
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Vertical leap
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    180cm
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Time to run 40m
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    7 sec
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Time to run 100m
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    14 sec
-                  </Typography>
-                </td>
-              </tr>
+              <img
+                src="/static/images/profile/edit_profile1.png"
+                alt="edit profile icon"
+                style={{
+                  width: "30px",
+                  height: "30px"
+                }}
+              />
+            </IconButton>
+          }
+          title="Personal Info"
+        />
 
-              <tr>
-                <td>
-                  <Typography
-                    variant="caption"
-                    gutterBottom
-                    align="left"
-                    style={{
-                      color: "#C12424",
-                      //fontWeight: "bold",
-                      fontSize: "20px",
-                      paddingTop: "3%",
-                      paddingBottom: "3%"
-                    }}
-                  >
-                    Affiliation
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Club
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    The Canons
-                  </Typography>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Typography variant="body1" gutterBottom align="left" wrap>
-                    Club location
-                  </Typography>
-                </td>
-                <td>
-                  <Typography
-                    variant="body1"
-                    color="primary"
-                    gutterBottom
-                    align="left"
-                    wrap
-                  >
-                    Tanzania
-                  </Typography>
-                </td>
-              </tr>
-            </table>
-          </CardContent>
-        </Card>
-      </div>
+        <CardContent>
+          <table
+            style={{
+              width: "100%"
+            }}
+          >
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left">
+                  Date of birth:
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                >
+                  17th September 2019
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Country of Origin:
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  Democratic Republic of Congo
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Position
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  Central forward
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Weight
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  120kg
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Height
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  190cm
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Wingspan
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  120cm
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Vertical leap
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  180cm
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Time to run 40m
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  7 sec
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Time to run 100m
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  14 sec
+                </Typography>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <Typography
+                  variant="caption"
+                  gutterBottom
+                  align="left"
+                  style={{
+                    color: "#C12424",
+                    //fontWeight: "bold",
+                    fontSize: "20px",
+                    paddingTop: "3%",
+                    paddingBottom: "3%"
+                  }}
+                >
+                  Affiliation
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Club
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  The Canons
+                </Typography>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <Typography variant="body1" gutterBottom align="left" wrap>
+                  Club location
+                </Typography>
+              </td>
+              <td>
+                <Typography
+                  variant="body1"
+                  color="primary"
+                  gutterBottom
+                  align="left"
+                  wrap
+                >
+                  Tanzania
+                </Typography>
+              </td>
+            </tr>
+          </table>
+        </CardContent>
+      </Card>
+    );
+
+    const profileForm = (
+      <Card
+        className={classes.card}
+        elevation={0}
+        style={{
+          border: "1px solid #d4d4d4",
+          borderRadius: "4px"
+        }}
+      >
+        <CardHeader
+          classes={{
+            title: classes.title
+          }}
+          action={
+            <IconButton
+              onClick={this.handleOpen}
+              style={{
+                background: "white"
+              }}
+            >
+              <img
+                src="/static/images/profile/edit_profile1.png"
+                alt="edit profile icon"
+                style={{
+                  width: "30px",
+                  height: "30px"
+                }}
+              />
+            </IconButton>
+          }
+          title="Personal Info"
+        />
+
+        <CardContent>
+          <Typography variant="body1" gutterBottom align="left" wrap>
+            Edit Profile
+          </Typography>
+        </CardContent>
+      </Card>
+    );
+    return (
+      <div className={classes.root}>{!editing ? profile : profileForm}</div>
     );
   }
 }
