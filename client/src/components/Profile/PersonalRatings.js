@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -12,7 +13,6 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 
-import IconButton from "@material-ui/core/IconButton";
 import SportsBasketballIcon from "@material-ui/icons/SportsBasketball";
 
 import Rating from "@material-ui/lab/Rating";
@@ -46,8 +46,6 @@ const styles = theme => ({
     textAlign: "left",
     color: "#C12424",
     marginBottom: "1%"
-
-    //fontWeight: "bold"
   },
   button: {
     margin: theme.spacing(3, 0, 2),
@@ -62,9 +60,42 @@ const styles = theme => ({
   },
   iconHover: {
     color: "FF7F50"
+  },
+  selectRater: {
+    paddingRight: "49%"
   }
 });
 
+const raters = [
+  {
+    value: "All",
+    label: "All"
+  },
+  {
+    value: "Coaches",
+    label: "Coaches"
+  },
+  {
+    value: "Players",
+    label: "Players"
+  },
+  {
+    value: "Fans",
+    label: "Fans"
+  },
+  {
+    value: "Scouts",
+    label: "Scouts"
+  },
+  {
+    value: "Media",
+    label: "Media"
+  },
+  {
+    value: "Agents",
+    label: "Agents"
+  }
+];
 class PersonalInfo extends Component {
   state = {
     editing: false,
@@ -127,27 +158,43 @@ class PersonalInfo extends Component {
           classes={{
             title: classes.title
           }}
-          action={
-            <IconButton
-              //onClick={this.onEdit}
-              style={{
-                background: "white"
-              }}
-            >
-              <img
-                src="/static/images/profile/edit_profile1.png"
-                alt="edit profile icon"
-                style={{
-                  width: "30px",
-                  height: "30px"
-                }}
-              />
-            </IconButton>
-          }
           title="Personal Ratings"
         />
 
         <CardContent>
+          <Grid
+            container
+            spacing={0}
+            style={{
+              marginTop: "-10%"
+            }}
+          >
+            <Grid item xs={9} sm={9}></Grid>
+
+            <Grid item xs={3} sm={3}>
+              <TextField
+                //required
+                id="raters"
+                select
+                name="raters"
+                //onChange={this.onChange}
+                label="Raters"
+                margin="normal"
+                variant="outlined"
+                fullWidth
+                InputLabelProps={{
+                  shrink: true
+                }}
+              >
+                {raters.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </Grid>
+          </Grid>
+
           <table
             style={{
               width: "100%"
@@ -493,22 +540,6 @@ class PersonalInfo extends Component {
             style={{
               marginBottom: "-2%"
             }}
-            action={
-              <IconButton
-                style={{
-                  background: "white"
-                }}
-              >
-                <img
-                  src="/static/images/profile/edit_profile1.png"
-                  alt="edit profile icon"
-                  style={{
-                    width: "30px",
-                    height: "30px"
-                  }}
-                />
-              </IconButton>
-            }
             title="Ratings form"
           />
 
@@ -826,21 +857,33 @@ class PersonalInfo extends Component {
                 </Grid>
 
                 <Grid item xs={3} sm={3}>
-                  <br />
                   <Typography
                     variant="subtitle1"
                     gutterBottom
-                    style={{ fontWeight: "bold" }}
+                    style={{
+                      color: "#C12424",
+                      //fontWeight: "bold",
+                      fontSize: "20px",
+                      paddingTop: "3%",
+                      paddingBottom: "3%"
+                    }}
                   >
                     Total
                   </Typography>
                 </Grid>
-                <Grid item xs={8} sm={8}>
-                  <br />
+
+                <Grid item xs={8} sm={8}></Grid>
+                <Grid item xs={1} sm={1}>
                   <Typography
                     variant="subtitle1"
                     gutterBottom
-                    style={{ fontWeight: "bold" }}
+                    style={{
+                      color: "#C12424",
+                      //fontWeight: "bold",
+                      fontSize: "20px",
+                      paddingTop: "3%",
+                      paddingBottom: "3%"
+                    }}
                   >
                     {(rebounding +
                       defence +

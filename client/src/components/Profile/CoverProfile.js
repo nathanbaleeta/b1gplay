@@ -85,7 +85,10 @@ const styles = theme => ({
   overlayChangeCover: {
     position: "absolute",
     top: "80%",
-    right: "4%"
+    right: "4%",
+    [theme.breakpoints.down("sm")]: {
+      marginRight: "2%"
+    }
     //color: "white"
   },
 
@@ -98,7 +101,7 @@ const styles = theme => ({
   iconCoverPhotoButton: {
     paddingLeft: "8px",
     paddingRight: "8px",
-    fontSize: "240%"
+    fontSize: "230%"
   }
 });
 

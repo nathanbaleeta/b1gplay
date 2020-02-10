@@ -124,7 +124,7 @@ class Suggestions extends Component {
                   } */
                   />
                   <Button
-                    size="medium"
+                    size="small"
                     variant="contained"
                     color="secondary"
                     className={classes.button}
@@ -154,7 +154,7 @@ class Suggestions extends Component {
                   } */
                   />
                   <Button
-                    size="medium"
+                    size="small"
                     variant="contained"
                     color="secondary"
                     className={classes.button}
@@ -184,7 +184,7 @@ class Suggestions extends Component {
                   } */
                   />
                   <Button
-                    size="medium"
+                    size="small"
                     variant="contained"
                     color="secondary"
                     className={classes.button}
