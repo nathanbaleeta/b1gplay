@@ -97,7 +97,8 @@ const styles = theme => ({
 
   iconCoverPhotoButton: {
     paddingLeft: "8px",
-    paddingRight: "8px"
+    paddingRight: "8px",
+    fontSize: "240%"
   }
 });
 
