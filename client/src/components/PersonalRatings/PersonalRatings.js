@@ -46,6 +46,7 @@ const styles = theme => ({
     marginLeft: "5%",
     marginRight: "3%",
     width: "auto",
+    zoom: "75%",
     [theme.breakpoints.down("sm")]: {
       marginLeft: "0%",
       marginRight: "-5%",

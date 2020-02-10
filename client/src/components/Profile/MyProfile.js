@@ -15,7 +15,8 @@ const styles = theme => ({
     ...theme.mixins.gutters(),
     //paddingTop: theme.spacing(1),
     //paddingBottom: theme.spacing(1),
-    border: "1px solid #d4d4d4"
+    border: "1px solid #d4d4d4",
+    zoom: "75%"
   },
   link: {
     textDecoration: "none",

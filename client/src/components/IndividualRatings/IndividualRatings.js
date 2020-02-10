@@ -6,8 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import FilterStars from "./FilterStars";
 import Stars from "./Stars";
 
-import Header from "../Layout/Header";
-
 const styles = theme => ({});
 
 class IndividualRatings extends Component {
@@ -16,7 +14,6 @@ class IndividualRatings extends Component {
 
     return (
       <Fragment>
-        <Header />
         <div>
           <Grid container spacing={4}>
             <Grid container item lg={3} md={5} sm={12} xs={12} spacing={2}>

@@ -16,6 +16,7 @@ const styles = theme => ({
   root: {
     background: "#FFFFFF",
     paddingTop: "7%",
+    zoom: "75%",
     [theme.breakpoints.down("sm")]: {
       marginLeft: "1%",
       marginTop: "14%"

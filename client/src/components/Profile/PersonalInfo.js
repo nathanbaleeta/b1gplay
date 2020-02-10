@@ -37,7 +37,7 @@ const styles = theme => ({
   },
   root: {
     flexGrow: 1,
-    zoom: "80%",
+    zoom: "75%",
     // Add breakpoint for small devices
     [theme.breakpoints.down("sm")]: {
       //marginTop: "-12%",
@@ -70,7 +70,7 @@ const styles = theme => ({
   // Overiding css properties on material ui textbox rounded borders
   textField: {
     [`& fieldset`]: {
-      borderRadius: 2
+      borderRadius: 4
     }
   },
   cardEdit: {
@@ -93,7 +93,6 @@ class PersonalInfo extends Component {
 
   render() {
     const { classes } = this.props;
-
     const { editing } = this.state;
 
     const profile = (
@@ -646,7 +645,7 @@ class PersonalInfo extends Component {
                   }}
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={6} sm={6}>
                 <TextField
                   required
                   id="outlined-uncontrolled"
@@ -686,7 +685,6 @@ class PersonalInfo extends Component {
                   }}
                 />
               </Grid>
-
               <Grid item xs={12} sm={12}>
                 <br />
                 <Button
@@ -695,7 +693,7 @@ class PersonalInfo extends Component {
                   size="large"
                   fullWidth
                   color="primary"
-                  style={{ background: "#D23E56", fontWeight: "bold" }}
+                  style={{ background: "#C12424", fontWeight: "bold" }}
                 >
                   Edit Profile
                 </Button>
