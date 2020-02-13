@@ -1,5 +1,4 @@
 import React, { Fragment, Component } from "react";
-import Grid from "@material-ui/core/Grid";
 
 import "./PhotoGallery.css";
 
@@ -86,7 +85,7 @@ export default class PhotoGallery extends Component {
         <div className={show ? "modal display-block" : "modal display-none"}>
           <section className="modal-main">
             <img
-              src="/static/images/nature/4.jpg"
+              src="/static/images/nature/11.png"
               alt=""
               className="modal-img"
             />
@@ -114,15 +113,15 @@ export default class PhotoGallery extends Component {
         {show ? modal : ""}
 
         {/* <!-- Images used to open the lightbox --> */}
-        <div className="row">
-          {imgUrls.map((pic, index) => (
-            <div className="column" key={index}>
+
+        <div className="grid-container">
+          {imgUrls1.map((pic, index) => (
+            <div className="grid-item" key={index}>
               <img
-                width="400"
-                height="400"
-                src={`/static/images/nature/${pic}`}
+                //src={`/static/images/nature/${pic}`}
+                src={pic}
                 alt=""
-                className="slide-img cursor"
+                className="grid-image"
                 onClick={this.showModal}
               />
             </div>
