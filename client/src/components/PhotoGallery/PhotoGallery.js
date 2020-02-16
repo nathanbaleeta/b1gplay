@@ -102,12 +102,14 @@ export default class PhotoGallery extends Component {
     );
     return (
       <Fragment>
+        <br></br>
         <h2
           style={{
-            textAlign: "center"
+            textAlign: "center",
+            fontWeight: "bold"
           }}
         >
-          Lightbox
+          Photo grid
         </h2>
 
         {show ? modal : ""}
